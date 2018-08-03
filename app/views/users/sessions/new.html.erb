@@ -1,0 +1,29 @@
+<h2>로그인</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :"이메일" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"비밀번호" %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :"로그인정보 저장" %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= hidden_field_tag :redirect_to, params[:redirect_to] %>
+    <%= f.submit "로그인" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

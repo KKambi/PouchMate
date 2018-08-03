@@ -11,5 +11,15 @@
 
   <body>
     <%= yield %>
+
+
+    <p>★모든 페이지마다 공유하는 로그인 서식★</p>
+    <% if user_signed_in? %>
+      <%= current_user.email %>
+      <%= link_to "로그아웃하기", destroy_user_session_path(redirect_to: request.path) %>
+    <% else %>
+      <%= link_to '로그인', new_user_session_path(redirect_to: request.path) %>
+      <%= link_to '회원가입', new_user_registration_path(redirect_to: request.path) %>
+<%end%>
   </body>
 </html>

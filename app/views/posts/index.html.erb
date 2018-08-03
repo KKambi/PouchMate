@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>화장대 목록</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Memo</th>
+      <th>Img url</th>
+      <th>Category</th>
+      <th>Open date</th>
+      <th>Exp date</th>
+      <th>Public</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.memo %></td>
+        <td><%= post.img_url %></td>
+        <td><%= post.category %></td>
+        <td><%= post.open_date %></td>
+        <td><%= post.exp_date %></td>
+        <td><%= post.public %></td>
+        <td><%= post.user_id %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

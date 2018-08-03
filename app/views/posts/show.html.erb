@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @post.memo %>
+</p>
+
+<p>
+  <strong>Img url:</strong>
+  <%= @post.img_url %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @post.category %>
+</p>
+
+<p>
+  <strong>Open date:</strong>
+  <%= @post.open_date %>
+</p>
+
+<p>
+  <strong>Exp date:</strong>
+  <%= @post.exp_date %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @post.public %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
