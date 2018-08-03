@@ -1,0 +1,13 @@
+<h1>친구 목록을 볼 수 있는 페이지</h1>
+
+<% if @friends.empty? %>
+  친구가 없습니다. 엉엉엉ㅠ
+<% else %>
+  <% @friends.each_with_index do | friend, index |%>
+  <p>
+    <%= index+1 %>번째 친구! <%= friend.nickname %>
+    <%= link_to "우리 절교해",  friends_destroy_path(:id => friend.id), :method => :delete %>
+  </p>
+  <% end %>
+<% end %>
+
