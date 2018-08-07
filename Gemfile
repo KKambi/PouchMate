@@ -6,8 +6,8 @@ ruby '2.3.7'
 # 로그인
 gem 'devise'
 
-
-
+# 환경변수 관리
+gem 'figaro'
 
 
 
