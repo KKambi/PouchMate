@@ -1,6 +1,6 @@
 
 
-<h1>화장대 목록</h1>
+<h1>등록된 모든 화장품 보기</h1>
 
 <table>
   <thead>
@@ -17,12 +17,12 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.memo %></td>
-        <td><%= post.img_url %></td>
         <td><%= post.category %></td>
         <td><%= post.open_date %></td>
         <td><%= post.exp_date %></td>
@@ -102,3 +102,23 @@
 
 
 >>>>>>> jane_item_registermodal_newbranch0803
+
+
+
+<!-- 화장대 한줄평 -->
+<p>
+  <div class="table_comment">
+    한줄평 달기
+    <%= form_for TableComment.new, url: table_comments_create_path(user_id: current_user.id) do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit "작성" %>
+    <% end %>
+  </div>
+</p>
+<p>
+  <div class="table_comment">
+    한줄평 목록
+    <%= TalbeComment.
+  </div>
+</p>
+

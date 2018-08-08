@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_03_073118) do
+ActiveRecord::Schema.define(version: 2018_08_08_035351) do
 
   create_table "friend_requests", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2018_08_03_073118) do
     t.date "open_date"
     t.date "exp_date"
     t.boolean "public"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "table_comments", force: :cascade do |t|
+    t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

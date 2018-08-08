@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
 
-
+  # 1명의 User가 여러 한줄평을 가질 수 있도록
+  has_many :table_comments, dependent: :destroy
 
 
 
