@@ -33,3 +33,24 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- 화장대 한줄평 -->
+<p>
+  <div class="table_comment">
+    한줄평 달기
+    <%= form_for TableComment.new, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit "작성" %>
+    <% end %>
+  </div>
+</p>
+<p>
+  <div class="table_comment">
+    한줄평 목록
+    <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
+      <div>
+        <%= comment.content %>
+      </div>
+    <% end %>
+  </div>
+</p>

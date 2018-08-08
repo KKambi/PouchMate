@@ -105,20 +105,5 @@
 
 
 
-<!-- 화장대 한줄평 -->
-<p>
-  <div class="table_comment">
-    한줄평 달기
-    <%= form_for TableComment.new, url: table_comments_create_path(user_id: current_user.id) do |f| %>
-      <%= f.text_field :content %>
-      <%= f.submit "작성" %>
-    <% end %>
-  </div>
-</p>
-<p>
-  <div class="table_comment">
-    한줄평 목록
-    <%= TalbeComment.
-  </div>
-</p>
+
 

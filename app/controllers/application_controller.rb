@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
 		root_path
 	end
 
+	def after_sign_out_path_for(resource)
+		root_path
+	end
+	
+# 지금 나머지 상황은 다 redirect되는데 회원정보 수정만 안됨
+	# def after_update_path_for(resource)
+	# 	flash[:notice] = "되냐?"
+	# 	root
+	# end
+
 
 	# Devise field 추가 위한 override
 	before_action :configure_permitted_parameters, if: :devise_controller?
