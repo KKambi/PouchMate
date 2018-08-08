@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   # Devise 관련 라우팅
   devise_for :users
 
-  
+  #search 관련 라우팅
+  get 'posts/search'
+  get :search, controller: :posts
+  get :autocomplete, controller: :posts
+
 
 
   # Post(화장품등록) 관련 라우팅 (REST)
