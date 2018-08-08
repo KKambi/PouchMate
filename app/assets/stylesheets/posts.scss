@@ -76,39 +76,50 @@
     width: 92%;
 }
 
-
 .pageright{
     width: 100%;
-    // background-color: #FFF0F0;
 }
 
-c
 // janenewhtml용 css
-
-  
 .boxdrag, .div2 {
     box-sizing: border-box;
     float: left;
-    width: 50px;
-    border-radius: 15px;
     height: 100px;
-    padding: 25px 7px 0px 7px;
-    // border: 1px solid black;
+    width: 75px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
-.boxdrag:hover {
-    // background-color: #F6FDFF;
-    // this color is babyblue<di
-}
+
 .box{
-    width: 50px;
-    height: 79px;
+    width: 75px;
     transition: transform .8s;
     position: relative;
-    z-index: 1;    
-    // border: 1px solid black;
+    z-index: 1;
 }
 .box:hover {
-    -ms-transform: scale(1.9); /* IE 9 */
+    -ms-transform: scale(1.5); /* IE 9 */
     -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(2.0);     
+    transform: scale(1.5);     
+}
+.div2{
+    transition: transform .8s;
+}
+.div2:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);       
+}
+
+//프로필 사진 동그라미로 만들어쮸
+.profileimage{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.aaa{
+    margin-left : 45%;
+    margin-top: 80px;
 }

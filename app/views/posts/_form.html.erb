@@ -71,7 +71,7 @@
         </div>
       </div>
       <!-- carrierwave 이미지 업로드를 위한 field -->
-      <%= form.file_field :image, :class =>'imageuploadclass' %><br>
+      <%= form.file_field :carrierimage, :class =>'imageuploadclass' %><br>
 
       <!-- user_id를 전달하기 위한 hidden_field -->
       <%= form.hidden_field :user_id, value: (User.find_by email: current_user.email).id %><br>

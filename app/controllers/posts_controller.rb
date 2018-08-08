@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+
   def title
   end
 
@@ -73,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :memo, :img_url, :category, :open_date, :exp_date, :public, :user_id)
+      params.require(:post).permit(:title, :memo, :img_url, :category, :open_date, :exp_date, :public, :user_id, :carrierimage)
     end
 end
