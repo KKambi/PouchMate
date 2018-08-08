@@ -1,6 +1,6 @@
 
 
-<h1>화장대 목록</h1>
+<h1>등록된 모든 화장품 보기</h1>
 
 <table>
   <thead>
@@ -17,12 +17,16 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
         <td><%= post.memo %></td>
+<<<<<<< HEAD
         <td><img src='<%= post.carrierimage.thumb %>'></td>
+=======
+>>>>>>> 1698331257cf1ca624e4856a3e78e2c2ba75210f
         <td><%= post.category %></td>
         <td><%= post.open_date %></td>
         <td><%= post.exp_date %></td>
@@ -40,6 +44,18 @@
 
 <<<<<<< HEAD
 <%= link_to '화장품 등록하기', new_post_path %>
+
+ <%= form_tag("/posts/search", method: "get") do %>
+        
+        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+       <%= submit_tag "검색", :name => nil %>
+        <% end %>
+
+
+        <!-- 위는  다은 -->
+
+
+
 
 <%= link_to '친구기능(friend_requests/index)', friend_requests_path %>
 =======
@@ -236,3 +252,8 @@
 
 
 >>>>>>> jane_item_registermodal_newbranch0803
+
+
+
+
+

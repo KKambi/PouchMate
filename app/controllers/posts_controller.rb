@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
 
+=======
+  before_action :force_json, only: :autocomplete
+>>>>>>> 1698331257cf1ca624e4856a3e78e2c2ba75210f
   def title
   end
 
@@ -9,6 +13,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new
+
+    @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+ 
   end
 
   # GET /posts/1
@@ -65,6 +72,18 @@ class PostsController < ApplicationController
     end
   end
 
+   def search
+      @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+
+    end 
+
+    def autocomplete
+      @items = Post.where(["title LIKE ?","%#{params[:search]}%"]).limit(5)
+
+    end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -75,4 +94,10 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :memo, :img_url, :category, :open_date, :exp_date, :public, :user_id, :carrierimage)
     end
+
+    def force_json
+      request.format = :json
+    end
+
+
 end

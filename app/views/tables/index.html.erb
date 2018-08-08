@@ -1,0 +1,56 @@
+<h1>특정 화장대 화장품만 보여줌!</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Memo</th>
+      <th>Img url</th>
+      <th>Category</th>
+      <th>Open date</th>
+      <th>Exp date</th>
+      <th>Public</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.memo %></td>
+        <td><%= post.category %></td>
+        <td><%= post.open_date %></td>
+        <td><%= post.exp_date %></td>
+        <td><%= post.public %></td>
+        <td><%= post.user_id %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- 화장대 한줄평 -->
+<p>
+  <div class="table_comment">
+    한줄평 달기
+    <%= form_for TableComment.new, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit "작성" %>
+    <% end %>
+  </div>
+</p>
+<p>
+  <div class="table_comment">
+    한줄평 목록
+    <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
+      <div>
+        <%= comment.content %>
+      </div>
+    <% end %>
+  </div>
+</p>
