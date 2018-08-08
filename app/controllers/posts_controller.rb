@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
+# <<<<<<< HEAD
 
-=======
+# =======
   before_action :force_json, only: :autocomplete
->>>>>>> 1698331257cf1ca624e4856a3e78e2c2ba75210f
+# >>>>>>> 1698331257cf1ca624e4856a3e78e2c2ba75210f
   def title
   end
 
