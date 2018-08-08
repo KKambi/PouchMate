@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_08_08_044404) do
-=======
-ActiveRecord::Schema.define(version: 2018_08_08_035351) do
->>>>>>> 1698331257cf1ca624e4856a3e78e2c2ba75210f
 
   create_table "friend_requests", force: :cascade do |t|
     t.integer "user_id"
