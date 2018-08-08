@@ -9,10 +9,11 @@ gem 'devise'
 # 환경변수 관리
 gem 'figaro'
 
+# carrierwave 재인이 설치한다링
+gem 'carrierwave', '~> 1.0'
 
-
-
-
+#mini_magick 재인이 설치한다링
+gem 'mini_magick'
 
 
 

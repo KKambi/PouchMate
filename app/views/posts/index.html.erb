@@ -22,7 +22,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.memo %></td>
-        <td><%= post.img_url %></td>
+        <td><img src='<%= post.carrierimage.thumb %>'></td>
         <td><%= post.category %></td>
         <td><%= post.open_date %></td>
         <td><%= post.exp_date %></td>
@@ -47,7 +47,7 @@
 
 
 <!--카루셀 화장대-->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -58,38 +58,77 @@
         <div class='firstpage'>
           <div class='top'>
             <div class='item left'>
-              <div class='floor one'></div>
-              <div class='floor two'></div>
+              <div class='floor one'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
+              <div class='floor two'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
             </div>
-            <div class='item middle'>
+            <div class='item middle'><br>
                     <div class='aaa'>
                         <div class='bbb'>
                             <% if user_signed_in? %>
-                                <a href='/friends/index'><img src='/lifeitem_icon.png'></a>
+                                <a href='/friends/index'><img src='/like.png'></a>
                             <% end %>
                         </div>
                     </div>
-                    <div class="profile"><img src="/user.png" width="100" height="100"></div><br>
-                    <div class="profile info">
+                    <div class="profile"'>
+                      <img src='/user.png' class='profileimage'>
+                    </div><br>
+                    <div class="profile_info">
                         <h1>
                             <%= @nickname %>
+                            재인
                         </h1>
                     </div>
                     <br>
                     <div class='friendsandlifetem'>
-                        <% if user_signed_in? %>
+<!--                         <% if user_signed_in? %>
                             <%= link_to(image_tag("/friends_icon.png", :class => "friends_icon", height: '32', width: '32'), @friends_icon, :method => @friends_method) %>
                             <%= @friends_icon_comment %>
-                        <% end %>
+                        <% end %> -->
+                            <% if user_signed_in? %>
+                                <a href='/friends/index'><img src='/friends_icon.png'></a>
+                            <% end %>                        
                     </div>
             </div>
             <div class='item right'>
-              <div class='floor three'></div>
-              <div class='floor four'></div>
+              <div class='floor three'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
+              <div class='floor four'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>                
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>             
+              </div>
             </div>
           </div>
           <div class='bottom'>
-            <div class='floor five'></div>
+            <div class='floor five'>
+                <% @posts.each_with_index do |p,index| %>
+                  <div class="box boxdrag <%=index%>" ondrop="drop(event)" ondragover="allowDrop(event)"><a href='/posts/<%=p.id%>'><img src=<%=p.carrierimage.thumb%> draggable="true" ondragstart="drag(event)" id='drag <%=index%>' class="imagedrag"></a>
+                  </div>
+                <%end%>              
+            </div>
           </div>
         </div>
     </div>
@@ -177,7 +216,23 @@
             }
         }        
     </script>
- 
+
+    <!-- 이건 드래그앤드롭 자바 스크립인임 -재인 -->
+     <script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+    </script>
 
 
 >>>>>>> jane_item_registermodal_newbranch0803
