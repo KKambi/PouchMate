@@ -4,65 +4,6 @@
   </div>
 </nav> 
 
-<<<<<<< HEAD
-
-<h1>등록된 모든 화장품 보기</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Memo</th>
-      <th>Category</th>
-      <th>Open date</th>
-      <th>Exp date</th>
-      <th>Public</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.memo %></td>
-        <td><img src='<%= post.carrierimage.thumb %>'></td>
-        <td><%= post.category %></td>
-        <td><%= post.open_date %></td>
-        <td><%= post.exp_date %></td>
-        <td><%= post.public %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '화장품 등록하기', new_post_path %>
-
- <%= form_tag("/posts/search", method: "get") do %>
-        
-        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
-       <%= submit_tag "검색", :name => nil %>
-        <% end %>
-
-
-        <!-- 위는  다은 -->
-
-
-
-
-<%= link_to '친구기능(friend_requests/index)', friend_requests_path %>
-=======
-<p>요기부터 화장대당</p>
-
-=======
 <!-- The Modal -->
 <div id="myModal" class="modal">
 <!-- Modal content -->
@@ -72,7 +13,6 @@
     </div>
   </div>                        
 </div>
->>>>>>> jane0808_mainpagework2
 
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
@@ -263,8 +203,6 @@
     }
     </script>
 
-<<<<<<< HEAD
-=======
     <script>
     $('.bs-example-modal-sm').modal()
       function whenDOMready(func) {
@@ -288,5 +226,3 @@
          } );
       } );
     </script>  
-
->>>>>>> jane0808_mainpagework2
