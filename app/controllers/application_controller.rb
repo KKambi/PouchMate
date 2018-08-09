@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(resource)
 		root_path
 	end
-
-	def after_sign_out_path_for(resource)
-		root_path
-	end
 	
 # 지금 나머지 상황은 다 redirect되는데 회원정보 수정만 안됨
 	# def after_update_path_for(resource)

@@ -59,6 +59,7 @@
     한줄평 목록
     <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
       <div>
+        <%= comment.user.nickname %>:
         <%= comment.content %>
       </div>
     <% end %>
