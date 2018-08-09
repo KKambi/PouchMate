@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
  
-
+  # 프로필 사진 업로드할 수 있도록
+  mount_uploader :profile_img, ProfileImgUploader
 
   # 1명의 User가 여러 화장품을 등록할 수 있도록
   has_many :posts, dependent: :destroy

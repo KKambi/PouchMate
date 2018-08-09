@@ -1,11 +1,21 @@
 <h1>특정 화장대 화장품만 보여줌!</h1>
 
+<div class="avatar">
+  <% if User.find(@user_id).profile_img.url %>
+    프로필 사진 thumb (150x150)
+    <img src="<%= @user.profile_img.thumb.url %>" />
+  <% end %>
+</div>
+
+<div>
+  닉네임: <%= @user.nickname %>
+</div>
+
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Memo</th>
-      <th>Img url</th>
       <th>Category</th>
       <th>Open date</th>
       <th>Exp date</th>

@@ -23,6 +23,12 @@
   </div>
 
   <div class="field">
+    <%= f.label :"프로필 사진" %></br>
+    <img src="<%= current_user.profile_img.thumb.url %>" /></br>
+    <%= f.file_field :profile_img %>
+  </div>
+
+  <div class="field">
     <%= f.label :"나이" %>
     <%= f.select :age, options_for_select(10..99, current_user.age) %>
   </div>

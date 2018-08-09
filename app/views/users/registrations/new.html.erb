@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :"프로필 사진" %>
+    <%= f.file_field :profile_img %>
+  </div>
+
+  <div class="field">
     <%= f.label :"나이" %>
     <%= f.select :age, options_for_select(10..99) %>
   </div>
@@ -43,6 +48,7 @@
     <%= f.label :"비밀번호 확인" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+
   
   <div>
     <%= f.hidden_field :admin %>

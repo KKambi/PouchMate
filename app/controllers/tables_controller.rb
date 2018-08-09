@@ -3,7 +3,8 @@ class TablesController < ApplicationController
 
 	# GET /table/:user_id
 	def index
-		@posts = Post.where(user_id: @user_id)
+		@posts = Post.where(@user_id)
+		@user = User.find(@user_id)
 	end
 
 	def comment_create
