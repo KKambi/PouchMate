@@ -1,21 +1,22 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .carousel{
     width: 80%;
     margin: 0 auto;
 }
 .top {
-    height: 65%;
+    height: 60%;
     display: flex;
     justify-content: center;
 }
 .bottom{
-    height: 30%;
+    height: 40%;
     // background-color: #FAFAD2;
 }
 .firstpage{
-    height: 600px;
+    height: 575px;
 }
 .left {
     // background-color: #FFF0F5;
@@ -72,7 +73,7 @@
 }
 
 .five,.bottomright, .bottomleft{
-    height: 60%;
+    height: 30%;
     width: 92%;
 }
 
@@ -122,4 +123,60 @@
 .aaa{
     margin-left : 45%;
     margin-top: 80px;
+}
+
+//모달띠우기 에러나서 다시해본디 ㅠㅠㅠ
+.modal-content{
+    position: relative;
+    z-index: 1;
+}
+
+.bs-example-modal-sm{
+    position: relative;
+    z-index: 1;
+}
+
+.footer{
+    width:70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.comment_content{
+    display: flex;
+}
+.comment_title{
+    text-align: center;
+}
+.comment_profile{
+    width: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.comment_comment{
+    width: 80%;
+}
+.commentprofileimage{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment_div, .friends_div {
+    border: 1px solid gray;
+    border-radius: 25px;
+}
+.comment_div{
+    width: 60%;
+}
+.friends_div{
+    width: 30%;
+}
+
+.wrapwrap{
+    display: flex;
+}
+.daeun{
+    margin: 0 auto;
+    width: 50%;
 }
