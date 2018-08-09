@@ -1,67 +1,21 @@
+<nav class="navbar navbar-dark bg-dark" style='height: 80px;'>
+  <div class='headingpouch'>
+    <a class="navbar-brand" href="#">Pouch Mate</a>
+  </div>
+</nav> 
 
-
-<h1>등록된 모든 화장품 보기</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Memo</th>
-      <th>Img url</th>
-      <th>Category</th>
-      <th>Open date</th>
-      <th>Exp date</th>
-      <th>Public</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.memo %></td>
-        <td><img src='<%= post.carrierimage.thumb %>'></td>
-        <td><%= post.category %></td>
-        <td><%= post.open_date %></td>
-        <td><%= post.exp_date %></td>
-        <td><%= post.public %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '화장품 등록하기', new_post_path %>
-
- <%= form_tag("/posts/search", method: "get") do %>
-        
-        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
-       <%= submit_tag "검색", :name => nil %>
-        <% end %>
-
-
-        <!-- 위는  다은 -->
-
-<%= link_to '친구기능(friend_requests/index)', friend_requests_path %>
-
-<p>요기부터 화장대당</p>
-
+<!-- The Modal -->
+<div id="myModal" class="modal">
+<!-- Modal content -->
+  <div class="modal-content">
+    <div class="ctn-form">
+    <%= render 'form', post: @post %>
+    </div>
+  </div>                        
+</div>
 
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
         <div class='firstpage'>
@@ -84,7 +38,7 @@
                 <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
               </div>
             </div>
-            <div class='item middle'><br>
+            <div class='item middle'>
                     <div class='aaa'>
                         <div class='bbb'>
                             <% if user_signed_in? %>
@@ -98,18 +52,17 @@
                     <div class="profile_info">
                         <h1>
                             <%= @nickname %>
-                            재인
+                            유정
                         </h1>
                     </div>
                     <br>
-                    <div class='friendsandlifetem'>
-<!--                         <% if user_signed_in? %>
-                            <%= link_to(image_tag("/friends_icon.png", :class => "friends_icon", height: '32', width: '32'), @friends_icon, :method => @friends_method) %>
-                            <%= @friends_icon_comment %>
-                        <% end %> -->
-                            <% if user_signed_in? %>
-                                <a href='/friends/index'><img src='/friends_icon.png'></a>
-                            <% end %>                        
+                    <div class='wrapwrap'>
+                      <div class='friendsandlifetem'>
+                              <% if user_signed_in? %>
+                                  <a href='/friends/index'><img src='/friends_icon.png'></a>
+                              <% end %>                        
+                      </div>
+                      <div id="myBtn"><img src='/plus.png'></div>
                     </div>
             </div>
             <div class='item right'>
@@ -158,7 +111,8 @@
         <div class='firstpage'>
           <div class='top'>
             <div class='pageright'>
-              <div class='topleft floorside'></div>
+              <div class='topleft floorside'> 
+              </div>
               <div class='topleft floorside'></div>
             </div>
           </div>
@@ -178,25 +132,31 @@
   </a>
 </div>
 
+<div class='footer'>
 
+  <div class='comment_div'>
+    <div class='comment_title'>
+      <p>파우치 리뷰</p><br>
+    </div>
 
-<%= link_to 'New Post', new_post_path %>
-<!-- 이제 모달 띠울꼬얌- by재인 -->
-\
-<!-- Trigger/Open The Modal -->
-<div id="myBtn">등록하기</div>
-                
-<!-- The Modal -->
-<div id="myModal" class="modal">
-                
-    <!-- Modal content -->
-    <div class="modal-content">
-      
-      <div class="ctn-form">
-        <%= render 'form', post: @post %>
+    <div class='comment_content'>
+      <div class='comment_profile'><img src='/user.png' class='commentprofileimage'></div>
+      <div class='comment_comment'>
+        <p>다은 재인아 DHC 클렌징 오일 어때?</p>
+        <p>4주 답글달기</p>
       </div>
-    </div>                        
+    </div>
+  </div>
+
+  <div class='friends_div'>인생템</div>
 </div>
+<div class='daeun'>
+   <%= form_tag("/posts/search", method: "get") do %>
+        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+        <%= submit_tag "검색", :name => nil %>
+    <% end %>
+</div>
+<%= link_to '친구기능(friend_requests/index)', friend_requests_path %>
 
     <script type='text/javascript'>
         // Get the modal
@@ -243,7 +203,27 @@
     }
     </script>
 
+    <script>
+    $('.bs-example-modal-sm').modal()
+      function whenDOMready(func) {
+         switch (document.readyState + '') {
+            case "complete":
+            case "loaded":
+            case "interactive":
+               func();
+               break;
+            default:
+               window.addEventListener('DOMContentLoaded', function (e) { func(); });
+         }
+      }
 
-
-
+      whenDOMready( () => {
+         let btnMenu = document.querySelector( '.hamburger' );
+         let nav = document.querySelector( 'nav' );
+         btnMenu.addEventListener( 'click', ( e : MouseEvent ) : void => {
+            btnMenu.classList.toggle( 'open' );
+            nav.classList.toggle( 'open' );
+         } );
+      } );
+    </script>  
 
