@@ -1,3 +1,232 @@
 // Place all the styles related to the Tables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.carousel{
+    width: 80%;
+    margin: 0 auto;
+}
+.top {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+.bottom{
+    height: 40%;
+}
+.firstpage{
+    height: 575px;
+}
+.left {
+    width: 37%;
+}
+
+.middle {
+    width: 26%;
+}
+
+.right {
+    width: 37%;
+}
+
+.left, .right,.bottom, .pageright{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.left {
+    align-items: flex-end;
+}
+.right {
+    align-items: flex-start;
+}
+.middle, .bottom, .pageright{
+    align-items: center;
+}
+.floor{
+    width: 80%;
+    height: 30%;
+    background-color: white;
+    border-bottom: 6px solid #575757;
+    box-shadow: 0px 15px 10px -15px #111;
+}
+.floorside{
+    height: 30%;
+    background-color: white;
+    border-bottom: 6px solid #575757;
+    width: 92%;
+    box-shadow: 0px 15px 10px -15px #111;
+}
+.floorside, .floor{
+    display: flex;
+    align-items: flex-end;
+    border-radius: 5px;
+}
+
+.five,.bottomright, .bottomleft{
+    height: 30%;
+    width: 92%;
+}
+
+.pageright{
+    width: 100%;
+}
+
+// janenewhtml용 css
+.boxdrag, .div2 {
+    box-sizing: border-box;
+    float: left;
+    height: 100px;
+    width: 75px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.box{
+    width: 75px;
+    transition: transform .8s;
+    position: relative;
+    z-index: 1;
+}
+.box:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);     
+}
+.div2{
+    transition: transform .8s;
+}
+.div2:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);       
+}
+
+//프로필 사진 동그라미로 만들어쮸
+.profileimage{
+    border-radius: 50%;
+}
+
+.aaa{
+    margin-left : 45%;
+    margin-top: 80px;
+}
+.footer{
+    width:70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.comment_content{
+    display: flex;
+}
+.comment_title{
+    text-align: center;
+}
+.comment_comment{
+    width: 80%;
+}
+.commentprofileimage, .mycommentprofileimage{
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+.comment_div, .friends_div {
+    border-radius: 15px;
+}
+.comment_div{
+    width: 60%;
+}
+.friends_div{
+    width: 30%;
+}
+
+.wrapwrap{
+    display: flex;
+}
+.daeun{
+    margin: 0 auto;
+    width: 50%;
+}
+
+//가져온거
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
+
+.comment_div, .friends_div{
+    border:1px solid #bbb;
+    border-radius: 25px;
+}
+.titleBox {
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group-com:first-child, .actionBox .form-group-com:first-child {
+    width:80%;
+}
+.commentBox .form-group-com:nth-child(2), .actionBox .form-group-com:nth-child(2) {
+    width:18%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    width:100%;
+    padding: 10px 10px 10px 20px;
+}
+.who{
+	font-weight: bold;
+    padding-right: 6px;	
+}
+.a{
+	display: flex;
+}
+.form-group-com{
+	
+}

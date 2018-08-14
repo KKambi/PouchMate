@@ -1,67 +1,207 @@
-<h1>특정 화장대 화장품만 보여줌!</h1>
+<nav class="navbar navbar-dark bg-dark" style='height: 80px;'>
+  <div class='headingpouch'>
+    <a class="navbar-brand" href="#">Pouch Mate</a>
+  </div>
+</nav> 
 
-<div class="avatar">
-  <% if User.find(@user_id).profile_img.url %>
-    프로필 사진 thumb (150x150)
-    <img src="<%= @user.profile_img.thumb.url %>" />
+<!-- The Modal 상품등록 모달재인-->
+<div id="myModal1" class="modal1">
+<!-- Modal content -->
+  <div class="modal-content1">
+    <div class="ctn-form">
+    <%= render 'form', post: @post %>
+    </div>
+  </div>                        
+</div>
+
+<!--카루셀 화장대-->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class='firstpage'>
+          <div class='top'>
+            <div class='item left'>
+              <div class='floor one'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
+              <div class='floor two'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
+            </div>
+            <div class='item middle'>
+                    <div class='aaa'>
+                      <% if user_signed_in? %>
+                        <a href='/friends/index'><img src='/like.png'></a>
+                      <% end %>
+                    </div>
+                    <div class="profile"'>
+                      <% if User.find(@user_id).profile_img.url %>
+                        <img src="<%= @user.profile_img.thumb.url %>" class='profileimage'>
+                      <% end %>
+                    </div><br>
+                    <div class="profile_info">
+                        <h1><%= @user.nickname %></h1>
+                    </div>
+                    <br>
+                    <div class='wrapwrap'>
+                      <div class='friendsandlifetem'>
+                        <% if user_signed_in? %>
+                          <a href='/friends/index'><img src='/friends_icon.png'></a>
+                        <% end %>                        
+                      </div>
+                      <div id="myBtn"><img src='/plus.png'></div>
+                    </div>
+            </div>
+            <div class='item right'>
+              <div class='floor three'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              </div>
+              <div class='floor four'>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>                
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
+                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>             
+              </div>
+            </div>
+          </div>
+          <div class='bottom'>
+            <div class='floor five'>
+                <% @posts.each_with_index do |p,index| %>
+                  <div class="box boxdrag <%=index%>" ondrop="drop(event)" ondragover="allowDrop(event)"><a href='/posts/<%=p.id%>'><img src=<%=p.carrierimage.thumb%> draggable="true" ondragstart="drag(event)" id='drag <%=index%>' class="imagedrag"></a>
+                  </div>
+                <%end%>              
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="carousel-item rightside">
+        <div class='firstpage'>
+          <div class='top'>
+            <div class='pageright'>
+              <div class='topright floorside'></div>
+              <div class='middleright floorside'></div>
+            </div>
+          </div>
+          <div class='bottom'>
+            <div class='bottomright floorside'></div>
+          </div>
+        </div>      
+    </div>
+    <div class="carousel-item leftside">
+        <div class='firstpage'>
+          <div class='top'>
+            <div class='pageright'>
+              <div class='topleft floorside'> 
+              </div>
+              <div class='topleft floorside'></div>
+            </div>
+          </div>
+          <div class='bottom'>
+            <div class='bottomleft floorside'></div>
+          </div>
+        </div>      
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 5%;opacity: 0.01;">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 5%;opacity: 0.01;">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class='footer'>
+  <div class="comment_div">
+      <div class="titleBox">
+        <label>파우치 리뷰</label>
+      </div>
+
+      <div class="actionBox">
+          <ul class="commentList">
+          <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
+              <li>
+                  <div class="commenterImage">
+                    <img src='<%= comment.user.profile_img.thumb4 %>' class='commentprofileimage'> 
+                  </div>
+                  <div class="commentText">
+                    <div class='a'>
+                      <p class='who'><%= comment.user.nickname %></p>
+                      <p> <%= comment.content %></p>                      
+                    </div>
+                      <span class="date sub-text">on March 5th, 2018</span>
+                  </div>
+              </li>
+          <% end %>
+          </ul>
+          <%= form_for TableComment.new, html: {class: "form-inline"}, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
+              <div class="form-group-com">
+                  <img src='<%=@user.profile_img.thumb3 %>' class='mycommentprofileimage'>
+                  <%= f.text_field :content, class: 'form-control', placeholder: '댓글달기'%>
+              </div>
+              <div class="form-group">
+                  <%=f.submit "작성", class: 'btn btn-default'%>
+              </div>
+          <% end %>
+      </div>
+  </div>
+  <div class='friends_div'>
+      <div class="titleBox">
+        <label>친구 추천</label>
+      </div>
+
+      <div class="actionBox">
+          <ul class="commentList">
+          <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
+              <li>
+                  <div class="commenterImage">
+                    <img src='<%= comment.user.profile_img.thumb4 %>' class='commentprofileimage'> 
+                  </div>
+                  <div class="commentText">
+                    <div class='a'>
+                      <p class='who'><%= comment.user.nickname %></p>
+                      <p> <%= comment.content %></p>                      
+                    </div>
+                      <span class="date sub-text">on March 5th, 2018</span>
+                  </div>
+              </li>
+          <% end %>
+          </ul>
+          <%= form_for TableComment.new, html: {class: "form-inline"}, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
+              <div class="form-group-com">
+                  <img src='<%=@user.profile_img.thumb3 %>' class='mycommentprofileimage'>
+                  <%= f.text_field :content, class: 'form-control', placeholder: '댓글달기'%>
+              </div>
+              <div class="form-group">
+                  <%=f.submit "작성", class: 'btn btn-default'%>
+              </div>
+          <% end %>
+      </div>      
+  </div>
+</div>
+
+
+<div class='daeun'>
+  <%= form_tag("/posts/search", method: "get") do %>
+    <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+    <%= submit_tag "검색", :name => nil %>
   <% end %>
 </div>
-
-<div>
-  닉네임: <%= @user.nickname %>
-</div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Memo</th>
-      <th>Category</th>
-      <th>Open date</th>
-      <th>Exp date</th>
-      <th>Public</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.memo %></td>
-        <td><%= post.category %></td>
-        <td><%= post.open_date %></td>
-        <td><%= post.exp_date %></td>
-        <td><%= post.public %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<!-- 화장대 한줄평 -->
-<p>
-  <div class="table_comment">
-    한줄평 달기
-    <%= form_for TableComment.new, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
-      <%= f.text_field :content %>
-      <%= f.submit "작성" %>
-    <% end %>
-  </div>
-</p>
-<p>
-  <div class="table_comment">
-    한줄평 목록
-    <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
-      <div>
-        <%= comment.user.nickname %>:
-        <%= comment.content %>
-      </div>
-    <% end %>
-  </div>
-</p>

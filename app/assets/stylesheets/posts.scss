@@ -13,23 +13,19 @@
 }
 .bottom{
     height: 40%;
-    // background-color: #FAFAD2;
 }
 .firstpage{
     height: 575px;
 }
 .left {
-    // background-color: #FFF0F5;
     width: 37%;
 }
 
 .middle {
-    // background-color: #EBFBFF;
     width: 26%;
 }
 
 .right {
-    // background-color: #FFF0F0;
     width: 37%;
 }
 
@@ -124,18 +120,6 @@
     margin-left : 45%;
     margin-top: 80px;
 }
-
-//모달띠우기 에러나서 다시해본디 ㅠㅠㅠ
-.modal-content{
-    position: relative;
-    z-index: 1;
-}
-
-.bs-example-modal-sm{
-    position: relative;
-    z-index: 1;
-}
-
 .footer{
     width:70%;
     margin: 0 auto;
@@ -158,8 +142,6 @@
     width: 80%;
 }
 .commentprofileimage{
-    width:40px;
-    height: 40px;
     border-radius: 50%;
 }
 .comment_div, .friends_div {
@@ -172,7 +154,6 @@
 .friends_div{
     width: 30%;
 }
-
 .wrapwrap{
     display: flex;
 }

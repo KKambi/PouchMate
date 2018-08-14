@@ -5,9 +5,9 @@
 </nav> 
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div인id="myModal1" class="modal1">
 <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content1">
     <div class="ctn-form">
     <%= render 'form', post: @post %>
     </div>
@@ -62,7 +62,7 @@
                                   <a href='/friends/index'><img src='/friends_icon.png'></a>
                               <% end %>                        
                       </div>
-                      <div id="myBtn"><img src='/plus.png'></div>
+                      <div id="myBtn1"><img src='/plus.png'></div>
                     </div>
             </div>
             <div class='item right'>
@@ -160,28 +160,28 @@
 
     <script type='text/javascript'>
         // Get the modal
-        var modal = document.getElementById('myModal');
+        var modal1 = document.getElementById('myModal1');
         
         // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+        var btn1 = document.getElementById("myBtn1");
         
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         
         // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
+        btn1.onclick = function() {
+            modal1.style.display = "block";
         }
         
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
-            modal.style.display = "none";
+            modal1.style.display = "none";
         }
         
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == modal1) {
+                modal1.style.display = "none";
             }
         }        
     </script>
