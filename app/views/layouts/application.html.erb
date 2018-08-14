@@ -30,43 +30,21 @@
     <% if alert %>
       <p id="alert"><%= alert %></p>
     <% end %>
-
-<<<<<<< HEAD
-    <%= yield %>
-    <p id="notice"><%= notice %></p>
-    <p>★모든 페이지마다 공유하는 로그인 서식★</p>
-    <% if user_signed_in? %>
-      <%= current_user.email %>
-      <%= link_to "회원정보수정", edit_user_registration_path %>
-      <%= link_to "로그아웃하기", destroy_user_session_path %>
-    <% else %>
-      <%= link_to '로그인', new_user_session_path %>
-      <%= link_to '회원가입', new_user_registration_path %>
-    <%end%>
-=======
-
     <%= yield %>
 
-
-  <div>
-    <p>★모든 페이지마다 공유하는 로그인 서식★
-      </br>
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-        <%= link_to "회원정보수정", edit_user_registration_path %>
-        <%= link_to "로그아웃하기", destroy_user_session_path %>
-      <% else %>
-        <%= link_to '로그인', new_user_session_path %>
-        <%= link_to '회원가입', new_user_registration_path %>
-      <%end%>
-    </p>
-  </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS 카루셀-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
->>>>>>> 9389b06edfcc9aa51c5d471763de131e781952b7
+    <div>
+      <p>★모든 페이지마다 공유하는 로그인 서식★
+        </br>
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          <%= link_to "회원정보수정", edit_user_registration_path %>
+          <%= link_to "로그아웃하기", destroy_user_session_path %>
+        <% else %>
+          <%= link_to '로그인', new_user_session_path %>
+          <%= link_to '회원가입', new_user_registration_path %>
+        <%end%>
+      </p>
+    </div>
   </body>
+  
 </html>
