@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+	before_action :authenticate_user!
   before_action :set_user_id, only: [:index]
 
 	# GET /tables/:user_id
