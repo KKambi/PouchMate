@@ -171,7 +171,7 @@
 </div>
 <div class='daeun'>
    <%= form_tag("/posts/search", method: "get") do %>
-        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+        <%= text_field_tag(:search,params[:search]) %>
         <%= submit_tag "검색", :name => nil %>
     <% end %>
 </div>

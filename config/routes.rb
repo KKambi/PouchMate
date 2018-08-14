@@ -17,12 +17,15 @@ Rails.application.routes.draw do
   #search 관련 라우팅
   get 'posts/search'
   get :search, controller: :posts
-  get :autocomplete, controller: :posts
+  
 
 
 
   # Post(화장품등록) 관련 라우팅 (REST)
   resources :posts
+
+  # like 관련 라우팅
+  post 'post/:post_id/like' => 'likes#like_toggle'
 
   
 
