@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_friend, only: :destroy
   
   def index
@@ -7,7 +8,9 @@ class FriendsController < ApplicationController
 
   def destroy
     current_user.remove_friend(@friend)
-    head :no_content
+    # head :no_content
+
+    redirect_to friends_index_path
   end
   
   

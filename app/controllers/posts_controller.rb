@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:title]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   before_action :force_json, only: :autocomplete
+
   def title
   end
 
@@ -17,7 +19,29 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
+  # D-day 보여주는 액션
   def show
+    @exp_date = @post.exp_date
+    @today = Date.today
+    @remain = (@exp_date - @today).to_i
+    @sign = '-'
+    if @remain <= 0
+      @result = "사용기한 끝! 쓰지마세요!"
+      @remain = -@remain
+      @sign = '+'
+    elsif @remain <= 10
+      @result = "10일 이내"
+    elsif @remain <= 20
+      @result = "10일~20일"
+    elsif @remain <= 30
+      @result = "20일~30일"
+    elsif @remain <= 40
+      @result = "30일~40일"
+    elsif @remain <= 50
+      @result = "40일~50일"     
+    else
+      @result = "안전함(50일 이상)"
+    end
   end
 
   # GET /posts/new

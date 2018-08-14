@@ -1,4 +1,5 @@
 class FriendRequestsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_friend_request, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -34,12 +35,12 @@ class FriendRequestsController < ApplicationController
     
     def destroy
         @friend_request.destroy
-        head :no_content
+        # head :no_content
     end
     
     def update
         @friend_request.accept
-        head :no_content
+        # head :no_content
     end
 
 

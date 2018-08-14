@@ -40,5 +40,38 @@
   <%= @post.user_id %>
 </p>
 
+<p>
+  <strong>D-day 테스트용</strong>
+  </br>
+  exp_date : <%= @exp_date %>
+  </br>
+  today : <%= @today %>
+  </br>
+  D<%= @sign %><%= @remain %>
+  </br>
+  결과 : <%= @result %>
+</p>
+
+<!------다은 좋아요 기능 ---------------->
+<p>
+  <strong>Like:</strong>
+  <%= @post.likes.size %> 명이 좋아합니다. 
+</p>
+ 
+<p>
+  <% if current_user.is_like? (@post) %>
+  <%=form_tag("/post/#{@post.id}/like") do%>
+  <button> 좋아요 취소 </button>  
+  <%end%>
+  
+  <% else %>
+  <%=form_tag("/post/#{@post.id}/like") do%>
+  <button> 좋아요 </button>  
+  <%end%>
+  
+  <% end %>
+</p>
+<!------다은 좋아요 기능 ----------------->
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
