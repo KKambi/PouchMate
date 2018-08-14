@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   # Table 라우팅
   get 'tables/index/:user_id' => 'tables#index', as: "tables"
 
+  get 'tables/mypage'
+
   post 'tables/comments/create/:user_id' => 'tables#comment_create', as: "tables_comments_create"
   
 
 
 
-  # Devise 관련 라우팅
-  devise_for :users
+  # Devise controller 관련 라우팅
+  devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
 
   #search 관련 라우팅
   get 'posts/search'

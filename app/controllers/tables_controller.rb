@@ -1,10 +1,15 @@
 class TablesController < ApplicationController
+	before_action :authenticate_user!
   before_action :set_user_id, only: [:index]
 
-	# GET /table/:user_id
+	# GET /tables/:user_id
 	def index
 		@posts = Post.where(@user_id)
 		@user = User.find(@user_id)
+	end
+
+	# GET /tables/mypage
+	def mypage
 	end
 
 	def comment_create

@@ -87,7 +87,10 @@
           <div class='bottom'>
             <div class='floor five'>
                 <% @posts.each_with_index do |p,index| %>
-                  <div class="box boxdrag <%=index%>" ondrop="drop(event)" ondragover="allowDrop(event)"><a href='/posts/<%=p.id%>'><img src=<%=p.carrierimage.thumb%> draggable="true" ondragstart="drag(event)" id='drag <%=index%>' class="imagedrag"></a>
+                  <div class="box boxdrag <%=index%>" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <a href='/posts/<%=p.id%>'>
+                      <img src=<%=p.carrierimage.thumb%> draggable="true" ondragstart="drag(event)" id='drag <%=index%>' class="imagedrag">
+                    </a>
                   </div>
                 <%end%>              
             </div>
@@ -139,11 +142,26 @@
       <p>파우치 리뷰</p><br>
     </div>
 
+
+<%= link_to 'New Post', new_post_path %>
+<!-- 이제 모달 띠울꼬얌- by재인 -->
+\
+<!-- Trigger/Open The Modal -->
+<div id="myBtn">등록하기</div>
+                
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="ctn-form">
+        <%= render 'form', post: @post %>
+
     <div class='comment_content'>
       <div class='comment_profile'><img src='/user.png' class='commentprofileimage'></div>
       <div class='comment_comment'>
         <p>다은 재인아 DHC 클렌징 오일 어때?</p>
         <p>4주 답글달기</p>
+
       </div>
     </div>
   </div>
