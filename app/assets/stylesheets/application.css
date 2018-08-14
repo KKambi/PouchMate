@@ -210,3 +210,12 @@
 .choose_section,.optionopen,.optionclose{
   display: flex;
 }
+
+
+.headingpouch{
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar{
+  margin: 0 auto;
+}
