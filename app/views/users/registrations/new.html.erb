@@ -35,6 +35,11 @@
     <%= f.radio_button(:gender, "여자") %>
     <%= label_tag(:gender, "여자") %>
   </div>
+
+  <div class="field">
+    <%= f.label :"한줄소개" %>
+    <%= f.text_field :intro %>
+  </div>
   
   <div class="field">
     <%= f.label :"비밀번호" %>
