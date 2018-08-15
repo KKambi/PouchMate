@@ -1,0 +1,87 @@
+<div class='newcosmetic ctn-form'>
+  <%= form_with(model: post, local: true) do |form| %>
+    <% if not user_signed_in? %>
+      로그인이 필요합니다.
+    <% else %>
+      <!-- form 작성 시 오류가 있다면, 저장되지 않는다는 에러 메세지 띄워줌 -->
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class='headofthemodal'>
+        <div class="titletitle">상품 등록</div>
+        <span class="close">&times;</span>
+      </div>
+
+      <!-- form 양식 -->
+      <div class="field form-group">
+       
+
+        <%= form.text_field :title, :class => 'control-inputs' %>        
+        <%= form.label :"화장품 이름", :class =>'control-label' %>
+
+        <i class="bar"></i>
+      </div>
+
+      <div class="field form-group">
+        <%= form.text_field :memo, :class => 'control-inputs' %>
+        <%= form.label :"간단메모", :class =>'control-label' %>
+        
+        <i class="bar"></i>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :'종류' %>
+        <%= form.select(:category, options_for_select(
+            [
+                ["스킨", "스킨"],
+                ['로션', "로션"],
+                ['립스틱', "립스틱"],
+                ['파운데이션', "파운데이션"],
+            ], 4
+        )) %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :'개봉날짜' %>
+        <%= form.date_select :open_date, :use_month_numbers=>true,
+            start_year: Date.today.year-10, end_year: Date.today.year+10, prompt: { year: '연도' , month: '월', day: '일'}  %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label :'유통기한' %>
+        <%= form.date_select :exp_date, :use_month_numbers=>true,
+            start_year: Date.today.year-10, end_year: Date.today.year+10, prompt: { year: '연도' , month: '월', day: '일'} %>
+      </div>
+      <div class='form-group'>
+      <%= form.label :'공개여부' %>
+        <div class='choose_section'>
+          <div class='optionopen'>
+            <%= form.radio_button(:public, true, :checked => true)%>
+            <%= label_tag(:public, "공개")%>
+          </div>
+          <div class='optionclose'>
+            <%= form.radio_button(:public, false)%>
+            <%= label_tag(:public, "비공개")%>
+          </div>
+        </div>
+      </div>
+
+      <!-- carrierwave 이미지 업로드를 위한 field -->
+      <%= form.file_field :carrierimage, :class =>'imageuploadclass' %><br>
+
+      <!-- user_id를 전달하기 위한 hidden_field -->
+      <%= form.hidden_field :user_id, value: (User.find_by email: current_user.email).id %><br>
+
+      <div class="actions btn-send">
+        <%= form.submit '등록하기', :class => 'control-inputs' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

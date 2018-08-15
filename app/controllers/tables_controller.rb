@@ -6,6 +6,7 @@ class TablesController < ApplicationController
 	def index
 		@user = User.find(@user_id)
 		@posts = @user.posts
+		@post = Post.new
 	end
 
 	# GET /tables/mypage
