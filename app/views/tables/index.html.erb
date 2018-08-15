@@ -1,7 +1,14 @@
-<nav class="navbar navbar-dark bg-dark" style='height: 80px;'>
+<nav class="jnav" style='height: 80px;'>
   <div class='headingpouch'>
-    <a class="navbar-brand" href="#">Pouch Mate</a>
+    <a class="jnavbar_brand" href="#">Pouch Mate</a>
   </div>
+  <div class="cntr-innr">
+    <div class='search'>
+      <%= form_tag("/posts/search", method: "get") do %>
+        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+      <% end %>
+    </div>  
+  </div> 
 </nav> 
 
 <!--카루셀 화장대-->
@@ -207,12 +214,7 @@
 </div>
 
 
-<div class='daeun'>
-  <%= form_tag("/posts/search", method: "get") do %>
-    <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
-    <%= submit_tag "검색", :name => nil %>
-  <% end %>
-</div>
+
 
 <%= link_to 'New Post', new_post_path %>
 
@@ -287,4 +289,17 @@
       });
 
   })();
+</script>
+
+<script type="text/javascript">
+
+  $("#inpt_search").on('focus', function () {
+    $(this).parent('label').addClass('active');
+});
+
+$("#inpt_search").on('blur', function () {
+    if($(this).val().length == 0)
+        $(this).parent('label').removeClass('active');
+});
+
 </script>
