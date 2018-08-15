@@ -4,8 +4,8 @@ class TablesController < ApplicationController
 
 	# GET /tables/:user_id
 	def index
-		@posts = Post.where(@user_id)
 		@user = User.find(@user_id)
+		@posts = @user.posts
 	end
 
 	# GET /tables/mypage

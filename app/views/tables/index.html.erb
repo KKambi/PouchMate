@@ -9,7 +9,7 @@
 
 <div>
   닉네임: <%= @user.nickname %></br>
-  한줄소개: <%= @user.intro %>
+  한줄소개: <%= @user.intro %></br>
 </div>
 
 <table>
@@ -38,8 +38,11 @@
         <td><%= post.public %></td>
         <td><%= post.user_id %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if @user == current_user %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
