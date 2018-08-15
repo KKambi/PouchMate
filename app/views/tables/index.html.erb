@@ -3,6 +3,7 @@
     <a class="navbar-brand" href="#">Pouch Mate</a>
   </div>
 </nav> 
+
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
   <div class="carousel-inner">
@@ -12,18 +13,8 @@
             <div class='item left'>
               <div class='floor one'>
                 <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
               </div>
               <div class='floor two'>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                 <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
               </div>
             </div>
@@ -97,7 +88,20 @@
         <div class='firstpage'>
           <div class='top'>
             <div class='pageright'>
-              <div class='topleft floorside'> 
+              <div class='topleft floorside'>
+                <% @posts.each_with_index do |p,index| %>
+                  <div class="box boxdrag <%=index%>" id='myBtn2'>
+                    <img src=<%=p.carrierimage.thumb%> id='drag <%=index%>'>
+                  </div>
+
+                  <div id="myModal2" class="modal2 <%=index%>">
+                    <div class="modal-content2">
+                        <%=p.title%>
+                        <%=p.carrierimage.thumb%>
+                    </div>                        
+                  </div>
+
+                <%end%>     
               </div>
               <div class='topleft floorside'></div>
             </div>
@@ -117,6 +121,21 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<!-- 모달 -->
+<div id="myBtn1">등록하기</div>
+
+<div id="myModal1" class="modal1">
+<!-- Modal content -->
+  <div class="modal-content1">
+    <div class="ctn-form">
+    <%= render 'form', post: @post %>
+    </div>
+  </div>                        
+</div>
+
+
+
 
 <div class='footer'>
   <div class="comment_div">
@@ -194,3 +213,78 @@
     <%= submit_tag "검색", :name => nil %>
   <% end %>
 </div>
+
+<%= link_to 'New Post', new_post_path %>
+
+<script type='text/javascript'>
+  // Get the modal
+  var modal1 = document.getElementById('myModal1');
+          
+  // Get the button that opens the modal
+  var btn1 = document.getElementById("myBtn1");
+          
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+          
+  // When the user clicks the button, open the modal 
+  btn1.onclick = function() {
+    modal1.style.display = "block";
+  }
+          
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal1.style.display = "none";
+  }
+          
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+      }
+  }
+</script>
+
+<script type='text/javascript'>
+  var modal2 = document.getElementById('myModal2');
+  var btn2 = document.getElementById("myBtn2");
+  var span = document.getElementsByClassName("close")[0];
+  btn2.onclick = function() {
+    modal2.style.display = "block";
+  }
+  span.onclick = function() {
+    modal2.style.display = "none";
+  }   
+  window.onclick = function(event) {
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+      }
+  }
+</script>
+
+<script type='text/javascript'>
+  (function(){
+          $(document).ready(function(){
+          // 가장 마지막 항목의 index를 가져온다.
+          //(책이 3권이면 3의 값이 $book_list_num)에 저장된다.
+          $cosmetic_list_num = $("div").data("listNum");
+
+          for(i=1; i<= parseInt($cosmetic_list_num); i++){
+              var modal[i] = document.getElementById('myModal[i]');
+              var btn[i] = document.getElementById("myBtn[i]");
+              var span = document.getElementsByClassName("close")[0];
+              btn[i].onclick = function() {
+                modal[i].style.display = "block";
+              }
+              span.onclick = function() {
+                modal[i].style.display = "none";
+              }   
+              window.onclick = function(event) {
+                if (event.target == modal[i]) {
+                    modal[i].style.display = "none";
+                  }
+              }
+          }
+      });
+
+  })();
+</script>

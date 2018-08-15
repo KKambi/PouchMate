@@ -1,9 +1,8 @@
 <body_mypage>
     <video id="bgvid" playsinline autoplay muted loop>
-      <!-- 
-    - Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
+      <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
     WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-    <source src="/Webcosmetic.mp4" type="video/mp4">  
+    <source src="/Webcosmetic.mp4" type="video/mp4">
 </body_mypage>
 
 <script type='text/javascript'>
@@ -43,18 +42,20 @@
 </script>
 
 <!--로그인 창-->
+<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header" style='line-height:25px'>
-		<div>Pouch Mate<br><span>너와 나의 파우치 메이트</span></div>
+    <div>Pouch Mate<br><span>너와 나의 파우치 메이트</span></div>
 </div>
-		<br>
+    <br>
 <div class="login">
-			<input type="text" placeholder="username" name="user"><br>
-			<input type="password" placeholder="password" name="password"><br>
-			<input type="button" value="Login"><br>
-			<a href='#' style='color:white'>로그인 없이 둘러보기</a>
-			<!-- a tag trigger modal -->
+      <input type="text" placeholder="username" name="user"><br>
+      <input type="password" placeholder="password" name="password"><br>
+      <input type="button" value="Login">
+      <a href='#' style='color:white'>로그인 없이 둘러보기</a> / 
+      <!-- a tag trigger modal -->
             <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
             
             <!-- Modal -->
@@ -76,7 +77,7 @@
                         <div class="label-text" >이름</div>
                       </label>
                       <label>
-                        <input type="number" required />
+                        <input type="text" id='regis' required />
                         <div class="label-text" >나이</div>
                       </label>
                       <label>
@@ -94,6 +95,7 @@
   
                         .modal-content{
                             background-color: #333333;
+                            background-color: rgba( 51, 51, 51, 0.95 );
                         }
                         
                         form {
@@ -109,21 +111,22 @@
                         label .label-text {
                           color: #9B9B9B;
                           cursor: text;
-                          font-size: 20px;
+                          font-size: 24px;
                           line-height: 20px;
                           text-transform: uppercase;
                           -moz-transform: translateY(-34px);
                           -ms-transform: translateY(-34px);
                           -webkit-transform: translateY(-34px);
-                          transform: translateY(-34px);
+                          transform: translateY(-50px);
                           transition: all 0.3s;
                         }
-                        #regis label input[type="text"]  {
+                        input#regis {
                           background-color: transparent;
                           border: 0;
                           border-bottom: 2px solid #4A4A4A ;
                           color: white;
-                          font-size: 36px;
+                          font-size: 24px;
+                          font-family: 'Gothic A1', sans-serif;
                           letter-spacing: -1px;
                           outline: 0;
                           padding: 5px 20px;
@@ -154,12 +157,12 @@
                         button {
                           background-color: #333333;
                           border: 2px solid white;
-                          border-radius: 27px;
+                          border-radius: 15px;
                           color: white;
                           cursor: pointer;
-                          font-size: 20px;
-                          margin-top: 20px;
-                          padding: 15px 30px;
+                          font-size: 15px;
+                          margin-top: 15px;
+                          padding: 10px 23px;
                           text-transform: uppercase;
                           transition: all 200ms;
                         }
@@ -174,7 +177,7 @@
                 </div>
               </div>
             </div>
-			
+      
 <div>
       <style>
       @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -326,10 +329,8 @@
       
       </style>
       
-
-
 <!-- * 로그인 안하면 화장대 못들어감 * 타이틀에서 밑으로 스크롤 하면 견본화장대 구경 가능 -->
-
+<br>
 <% if user_signed_in? %>
 	<%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 
 <% end %>
