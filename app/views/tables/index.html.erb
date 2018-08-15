@@ -207,20 +207,11 @@
 
 </p>
 <p>
-  <div class="table_comment">
-    한줄평 목록
-    <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
-      <div>
-        <%= comment.user.nickname %>:
-        <%= comment.content %>
-        <%= comment.created_at.strftime("%y/%m/%d") %>
 
   <div class='friends_div'>
       <div class="titleBox">
         <label>친구 추천</label>
-
       </div>
-
       <div class="actionBox">
           <ul class="commentList">
           <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
@@ -233,7 +224,7 @@
                       <p class='who'><%= comment.user.nickname %></p>
                       <p> <%= comment.content %></p>                      
                     </div>
-                      <span class="date sub-text">on March 5th, 2018</span>
+                      <span class="date sub-text"><%= comment.created_at.strftime("%y/%m/%d") %></span>
                   </div>
               </li>
           <% end %>
