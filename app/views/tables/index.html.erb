@@ -19,61 +19,119 @@
           <div class='top'>
             <div class='item left'>
               <div class='floor one'>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2"></div>
               </div>
               <div class='floor two'>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2"></div>
               </div>
             </div>
+
             <div class='item middle'>
-                    <div class='aaa'>
-                      <% if user_signed_in? %>
-                        <a href='/friends/index'><img src='/like.png'></a>
-                      <% end %>
+              <div class='jprofile'>
+
+                <div class='jprofile_top'>
+                    <div class='profiletop'>
+                      <div class='nofcos'>56<br>화장품</div>
+                      <div class='noffriends'>118<br>친구</div>
                     </div>
-                    <div class="profile"'>
+
+                    <div class="profile">
                       <% if User.find(@user_id).profile_img.url %>
                         <img src="<%= @user.profile_img.thumb.url %>" class='profileimage'>
                       <% end %>
                     </div><br>
                     <div class="profile_info">
+                      <div class='profile_info_nick'>
                         <h1><%= @user.nickname %></h1>
-                    </div>
-                    <br>
-                    <div class='wrapwrap'>
-                      <div class='friendsandlifetem'>
-                        <% if user_signed_in? %>
-                          <a href='/friends/index'><img src='/friends_icon.png'></a>
-                        <% end %>                        
                       </div>
-                      <div id="myBtn"><img src='/plus.png'></div>
+                      <div class='profile_info_mes'>
+                        <h5>여러분 클리오 립스틱을 구매하세요 / 가성비 좋은 크림 추천좀</h5>                        
+                      </div>
+                        <br>
                     </div>
+                </div><br>
+
+                <div class='jprofile_bottom'>
+                  <div class='jhistory'>
+                    <a href='/friends/index'><img src='/time.png'></a>
+                  </div>
+                  <div class='jfriends'>
+                    <% if user_signed_in? %>
+                      <a href='/friends/index'><img src='/group.png'></a>
+                    <% end %>
+                  </div>
+                  <div class='jmypage'>
+                    <% if user_signed_in? %>
+                    <a href='/users/edit'><img src='/user.png'></a>
+                    <% end %>
+                  </div>
+                </div>
+
+              </div>
             </div>
+
             <div class='item right'>
               <div class='floor three'>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="div2"></div>
               </div>
               <div class='floor four'>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>                
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
-                <div class="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>             
+                <div class="div2"></div>       
               </div>
             </div>
           </div>
           <div class='bottom'>
             <div class='floor five'>
                 <% @posts.each_with_index do |p,index| %>
-                  <div class="box boxdrag <%=index%>" ondrop="drop(event)" ondragover="allowDrop(event)"><a href='/posts/<%=p.id%>'><img src=<%=p.carrierimage.thumb%> draggable="true" ondragstart="drag(event)" id='drag <%=index%>' class="imagedrag"></a>
+
+                  <div class="cosmetic_box openmodal myBtn">
+                    <img src="<%=p.carrierimage.thumb%>">
                   </div>
-                <%end%>              
+
+                  <div class="cosmeticmodal myModal">
+                    <div class="cosmeticmodal_content">
+                      <span class="close">&times;</span>
+                      <p>
+                      상품 : <%= p.title %><br>
+                      메모 : <%= p.memo %><br>
+                      </p>
+                      <div class='testest'>
+                        <strong>carrierimage:</strong>
+                        <img src="<%= p.carrierimage.thumb %>">
+                      </div>
+                      <p>
+                        종류 : <%= p.category %><br>
+                        <strong>Open date:</strong><%= p.open_date %><br>
+                        <strong>Exp date:</strong><%= p.exp_date %><br>
+                        <strong>Public:</strong><%= p.public %><br>
+                        <strong>D-day 테스트용</strong>
+                        </br>
+                        exp_date : <%= @exp_date %>
+                        </br>
+                        today : <%= @today %>
+                        </br>
+                        D<%= @sign %><%= @remain %>
+                        </br>
+                        결과 : <%= @result %>
+                      </p>
+                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
+                      <p>
+                        <% if current_user.is_like? (p) %>
+                        <%=form_tag("/post/#{p.id}/like") do%>
+                        <button> 좋아요 취소 </button>  
+                        <%end%>
+                        
+                        <% else %>
+                        <%=form_tag("/post/#{p.id}/like") do%>
+                        <button> 좋아요 </button>  
+                        <%end%>
+                        
+                        <% end %>
+                      </p>
+                      <%= link_to 'Edit', edit_post_path(p) %>
+                    </div>
+                  </div>
+
+                <%end%>            
             </div>
           </div>
         </div>
@@ -97,18 +155,56 @@
             <div class='pageright'>
               <div class='topleft floorside'>
                 <% @posts.each_with_index do |p,index| %>
-                  <div class="box boxdrag <%=index%>" id='myBtn2'>
-                    <img src=<%=p.carrierimage.thumb%> id='drag <%=index%>'>
+
+                  <div class="cosmetic_box openmodal myBtn">
+                    <img src="<%=p.carrierimage.thumb%>">
                   </div>
 
-                  <div id="myModal2" class="modal2 <%=index%>">
-                    <div class="modal-content2">
-                        <%=p.title%>
-                        <%=p.carrierimage.thumb%>
-                    </div>                        
+                  <div class="cosmeticmodal myModal">
+                    <div class="cosmeticmodal_content">
+                      <span class="close">&times;</span>
+                      <p>
+                      상품 : <%= p.title %><br>
+                      메모 : <%= p.memo %><br>
+                      </p>
+                      <div class='testest'>
+                        <strong>carrierimage:</strong>
+                        <img src="<%= p.carrierimage.thumb %>">
+                      </div>
+                      <p>
+                        종류 : <%= p.category %><br>
+                        <strong>Open date:</strong><%= p.open_date %><br>
+                        <strong>Exp date:</strong><%= p.exp_date %><br>
+                        <strong>Public:</strong><%= p.public %><br>
+                        <strong>D-day 테스트용</strong>
+                        </br>
+                        exp_date : <%= @exp_date %>
+                        </br>
+                        today : <%= @today %>
+                        </br>
+                        D<%= @sign %><%= @remain %>
+                        </br>
+                        결과 : <%= @result %>
+                      </p>
+                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
+                      <p>
+                        <% if current_user.is_like? (p) %>
+                        <%=form_tag("/post/#{p.id}/like") do%>
+                        <button> 좋아요 취소 </button>  
+                        <%end%>
+                        
+                        <% else %>
+                        <%=form_tag("/post/#{p.id}/like") do%>
+                        <button> 좋아요 </button>  
+                        <%end%>
+                        
+                        <% end %>
+                      </p>
+                      <%= link_to 'Edit', edit_post_path(p) %>
+                    </div>
                   </div>
 
-                <%end%>     
+                <%end%>                  
               </div>
               <div class='topleft floorside'></div>
             </div>
@@ -119,30 +215,15 @@
         </div>      
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="width: 5%;opacity: 0.01;">
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="opacity: 0.01;">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="width: 5%;opacity: 0.01;">
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="opacity: 0.01;">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-<!-- 모달 -->
-<div id="myBtn1">등록하기</div>
-
-<div id="myModal1" class="modal1">
-<!-- Modal content -->
-  <div class="modal-content1">
-    <div class="ctn-form">
-    <%= render 'form', post: @post %>
-    </div>
-  </div>                        
-</div>
-
-
-
 
 <div class='footer'>
   <div class="comment_div">
@@ -163,7 +244,7 @@
                       <p class='who'><%= comment.user.nickname %></p>
                       <p> <%= comment.content %></p>                      
                     </div>
-                      <span class="date sub-text">on March 5th, 2018</span>
+                      <span class="date sub-text"><%= comment.created_at.strftime("%y/%m/%d") %></span>
                   </div>
               </li>
           <% end %>
@@ -179,9 +260,6 @@
           <% end %>
       </div>
   </div>
-
-</p>
-<p>
 
   <div class='friends_div'>
       <div class="titleBox">
@@ -216,91 +294,70 @@
       </div>      
   </div>
 </div>
-
 <%= link_to 'New Post', new_post_path %>
+<!-- 모달 -->
+<div id="myBtn-form">등록하기</div>
 
+<div id="myModal-form" class="modal1">
+<!-- Modal content -->
+  <div class="modal-content1">
+    <div class="ctn-form">
+    <%= render 'form', post: @post %>
+    </div>
+  </div>                        
+</div>
 <script type='text/javascript'>
   // Get the modal
-  var modal1 = document.getElementById('myModal1');
+  var modalform = document.getElementById('myModal-form');
           
   // Get the button that opens the modal
-  var btn1 = document.getElementById("myBtn1");
+  var btnform = document.getElementById("myBtn-form");
           
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
           
   // When the user clicks the button, open the modal 
-  btn1.onclick = function() {
-    modal1.style.display = "block";
+  btnform.onclick = function() {
+    modalform.style.display = "block";
   }
           
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
-    modal1.style.display = "none";
+    modalform.style.display = "none";
   }
           
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
-    if (event.target == modal1) {
-        modal1.style.display = "none";
+    if (event.target == modalform) {
+        modalform.style.display = "none";
       }
   }
 </script>
 
 <script type='text/javascript'>
-  var modal2 = document.getElementById('myModal2');
-  var btn2 = document.getElementById("myBtn2");
-  var span = document.getElementsByClassName("close")[0];
-  btn2.onclick = function() {
-    modal2.style.display = "block";
-  }
-  span.onclick = function() {
-    modal2.style.display = "none";
-  }   
-  window.onclick = function(event) {
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-      }
-  }
-</script>
-
-<script type='text/javascript'>
-  (function(){
-          $(document).ready(function(){
-          // 가장 마지막 항목의 index를 가져온다.
-          //(책이 3권이면 3의 값이 $book_list_num)에 저장된다.
-          $cosmetic_list_num = $("div").data("listNum");
-
-          for(i=1; i<= parseInt($cosmetic_list_num); i++){
-              var modal[i] = document.getElementById('myModal[i]');
-              var btn[i] = document.getElementById("myBtn[i]");
-              var span = document.getElementsByClassName("close")[0];
-              btn[i].onclick = function() {
-                modal[i].style.display = "block";
-              }
-              span.onclick = function() {
-                modal[i].style.display = "none";
-              }   
-              window.onclick = function(event) {
-                if (event.target == modal[i]) {
-                    modal[i].style.display = "none";
-                  }
-              }
-          }
-      });
-
-  })();
+ window.onload = function(){
+var modals = document.getElementsByClassName('cosmeticmodal');
+var btns = document.getElementsByClassName("openmodal");
+var spans=document.getElementsByClassName("close");
+for(let i=0;i<btns.length;i++){
+    btns[i].onclick = function() {
+        modals[i].style.display = "block";
+    }
+}
+for(let i=0;i<spans.length;i++){
+    spans[i].onclick = function() {
+        modals[i].style.display = "none";
+    }
+}
+}
 </script>
 
 <script type="text/javascript">
-
   $("#inpt_search").on('focus', function () {
     $(this).parent('label').addClass('active');
 });
-
 $("#inpt_search").on('blur', function () {
     if($(this).val().length == 0)
         $(this).parent('label').removeClass('active');
 });
-
 </script>
