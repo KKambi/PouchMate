@@ -1,10 +1,13 @@
 // Place all the styles related to the Tables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .carousel{
-    width: 80%;
+  width:100%;
+}
+.carousel-inner{
     margin: 0 auto;
+    height: 100%;
+    width: 100%;
 }
 .top {
     height: 60%;
@@ -16,29 +19,29 @@
 }
 .firstpage{
     height: 575px;
+    background-image: url("/gridgird.png");
+    background-repeat: repeat;
+    width: 90%;
+    margin: 0 auto;
 }
 .left {
     width: 37%;
 }
 
 .middle {
-    width: 26%;
+  width: 26%;
 }
 
 .right {
-    width: 37%;
+  width: 37%;
 }
 
 .left, .right,.bottom, .pageright{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.middle{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .left {
     align-items: flex-end;
 }
@@ -49,18 +52,18 @@
     align-items: center;
 }
 .floor{
-    width: 80%;
+    width: 60%;
     height: 30%;
-    background-color: white;
-    border-bottom: 6px solid #575757;
-    box-shadow: 0px 15px 10px -15px #111;
+    //background-color: white;
+    //border-bottom: 6px solid #575757;
+    //box-shadow: 0px 15px 10px -15px #111;
 }
 .floorside{
     height: 30%;
-    background-color: white;
-    border-bottom: 6px solid #575757;
-    width: 92%;
-    box-shadow: 0px 15px 10px -15px #111;
+    //background-color: white;
+    //border-bottom: 6px solid #575757;
+    width: 70%;
+    //box-shadow: 0px 15px 10px -15px #111;
 }
 .floorside, .floor{
     display: flex;
@@ -70,7 +73,7 @@
 
 .five,.bottomright, .bottomleft{
     height: 30%;
-    width: 92%;
+    width: 70%;
 }
 
 .pageright{
@@ -78,7 +81,7 @@
 }
 
 // janenewhtml용 css
-.boxdrag, .div2 {
+.cosmetic_box, .div2 {
     box-sizing: border-box;
     float: left;
     height: 100px;
@@ -87,35 +90,23 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-}
-.box{
-    width: 75px;
-    transition: transform .8s;
     position: relative;
     z-index: 1;
 }
-.box:hover {
+.cosmetic_box, .div2{
+    transition: transform .8s;
+}
+.cosmetic_box:hover, .div2:hover{
     -ms-transform: scale(1.5); /* IE 9 */
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5);     
-}
-.div2{
-    transition: transform .8s;
-}
-.div2:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5);       
 }
 
 //프로필 사진 동그라미로 만들어쮸
 .profileimage{
     border-radius: 50%;
-}
-
-.aaa{
-    margin-left : 45%;
-    margin-top: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 .footer{
     width:70%;
@@ -146,14 +137,6 @@
 .friends_div{
     width: 30%;
 }
-.wrapwrap{
-    display: flex;
-}
-.daeun{
-    margin: 0 auto;
-    width: 50%;
-}
-
 //가져온거
 @import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
 .comment_div, .friends_div{
@@ -219,7 +202,7 @@
 }
 .who{
 	font-weight: bold;
-    padding-right: 6px;	
+  padding-right: 6px;	
 }
 .a{
 	display: flex;
@@ -227,10 +210,10 @@
 
 //재인 마지막으로 모달 띄워본다ㅂㄷㅂㄷ
 /* The Modal (background) */
-.modal1, .modal2 {
+.modal1, .cosmeticmodal{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 60px; /* Location of the box */
     left: 0;
     top: 0;
@@ -264,7 +247,7 @@
 *:focus {
   outline: none;
 }
-.modal-content1, .modal-content2 {
+.modal-content1, .modal-content2, .cosmeticmodal_content {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 2px 10px 18px #202020;
@@ -410,4 +393,51 @@
 }
 .choose_section,.optionopen,.optionclose{
   display: flex;
+}
+
+.jprofile{
+  width: 73%;
+  margin: auto;
+  padding-top: 50px;
+}
+.jprofile_top{
+  background-color: white;
+  background-color:rgba( 255, 255, 255, 0.89 );
+}
+.jprofile_bottom{
+  height: 45px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1.5px solid #c4c4c4;
+  border-bottom: 1.5px solid #c4c4c4;
+}
+.jprofile_bottom img{
+  width: 25px;
+  height: 25px;
+}
+.profile{
+  display: flex;
+  justify-content: center;
+}
+.profile_info_nick, .nofcos, .noffriends{
+  text-align: center;
+}
+.nofcos, .noffriends {
+  font-size: 15px;
+}
+.nofcos, .noffriends {
+  position: absolute;
+}
+.nofcos{
+  top: 0;
+  left: 0;
+}
+.noffriends{
+  top: 0;
+  right: 0;
+}
+.profiletop{
+  position: relative;
 }

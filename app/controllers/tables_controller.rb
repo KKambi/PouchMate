@@ -7,6 +7,7 @@ class TablesController < ApplicationController
 		@user = User.find(@user_id)
 		@posts = @user.posts
 		@post = Post.new
+	    @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
 	end
 
 	# GET /tables/mypage
