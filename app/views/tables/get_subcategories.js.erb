@@ -1,0 +1,3 @@
+$('#middle-category').html("<%= j collection_select(:post, :category, @middle_category, :id, :name) %>");
+
+$('#small-category').html("<%= j collection_select(:post, :category, @small_category, :id, :name) %>");

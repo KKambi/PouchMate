@@ -49,6 +49,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def get_subcategories
+    @middle_category = Category.where(ancestry: params[:category_id])
+    @small_category = Category.where(ancestry: params[:category_id])
+  end
+
   # GET /posts/1/edit
   def edit
   end
