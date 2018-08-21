@@ -95,23 +95,18 @@
                       메모 : <%= p.memo %><br>
                       </p>
                       <div class='testest'>
-                        <strong>carrierimage:</strong>
+                        <strong>이미지</strong>
                         <img src="<%= p.carrierimage.thumb %>">
                       </div>
                       <p>
-                        종류 : <%= p.category %><br>
-                        <strong>Open date:</strong><%= p.open_date %><br>
-                        <strong>Exp date:</strong><%= p.exp_date %><br>
-                        <strong>Public:</strong><%= p.public %><br>
-                        <strong>D-day 테스트용</strong>
+                        <strong>종류 : </strong> <%= Category.find(p.category).name %><br>
+                        <strong>개봉날짜 : </strong><%= p.open_date %><br>
+                        <strong>사용기한 : </strong><%= p.exp_date %><br>
+                        <strong>공개여부 : </strong><%= p.public %>
+                        <% @exp = p.exp_date %>
+                        <% @today = Date.today %>
                         </br>
-                        exp_date : <%= @exp_date %>
-                        </br>
-                        today : <%= @today %>
-                        </br>
-                        D<%= @sign %><%= @remain %>
-                        </br>
-                        결과 : <%= @result %>
+                        D<%= sprintf("%+d", @remain = @today - @exp) %>
                       </p>
                       <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
                       <p>
@@ -127,7 +122,8 @@
                         
                         <% end %>
                       </p>
-                      <%= link_to 'Edit', edit_post_path(p) %>
+                      <%= link_to '수정', edit_post_path(p) %>
+                      <%= link_to '삭제', post_path(p), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %>
                     </div>
                   </div>
 
