@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   
 
 
-
   # Devise controller 관련 라우팅
   devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords', sessions: 'users/sessions' }
 
@@ -22,7 +21,12 @@ Rails.application.routes.draw do
 
 
   # Post(화장품등록) 관련 라우팅 (REST)
-  resources :posts
+  resources :posts do
+    member do
+      get :get_middle_categories, defaults: { format: "js" }
+      get :get_small_categories, defaults: { format: "js" }
+    end
+  end
 
   # like 관련 라우팅
   post 'post/:post_id/like' => 'likes#like_toggle'

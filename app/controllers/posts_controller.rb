@@ -49,6 +49,14 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def get_middle_categories
+    @middle_categories = Category.find(params[:category_id]).children
+  end
+
+  def get_small_categories
+    @small_categories = Category.find(params[:category_id]).children
+  end
+
   # GET /posts/1/edit
   def edit
   end

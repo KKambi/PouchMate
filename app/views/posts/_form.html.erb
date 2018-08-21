@@ -37,15 +37,16 @@
       </div>
 
       <div class="field form-group">
-        <%= form.label :'종류' %>
-        <%= form.select(:category, options_for_select(
-            [
-                ["스킨", "스킨"],
-                ['로션', "로션"],
-                ['립스틱', "립스틱"],
-                ['파운데이션', "파운데이션"],
-            ], 4
-        )) %>
+        <div id="big-category">
+          <%= form.label :'종류' %></br>
+          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select'} %>
+        </div>
+
+        <div id="middle-category">
+        </div>
+
+        <div id="small-category">
+        </div>
       </div>
 
       <div class="field form-group">
