@@ -1,0 +1,1 @@
+$('#small-category').html("<%= j collection_select(:post, :category, @small_categories, :id, :name, {prompt: '소분류'}, {:id => 'small-select'}) %>");

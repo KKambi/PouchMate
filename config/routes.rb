@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   # Post(화장품등록) 관련 라우팅 (REST)
   resources :posts do
     member do
-      get :get_subcategories, defaults: { format: "js" }
+      get :get_middle_categories, defaults: { format: "js" }
+      get :get_small_categories, defaults: { format: "js" }
     end
   end
 

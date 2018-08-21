@@ -38,16 +38,14 @@
 
       <div class="field form-group">
         <div id="big-category">
-          <%= form.label :'종류' %>
+          <%= form.label :'종류' %></br>
           <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select'} %>
         </div>
 
         <div id="middle-category">
-          <%= form.select(:category, options_for_select([["중분류", nil]], 1), {}, {:id => 'middle-select'}) %>
         </div>
 
         <div id="small-category">
-          <%= form.select(:category, options_for_select([["소분류", nil]], 1), {}, {:id => 'small-select'}) %>
         </div>
       </div>
 

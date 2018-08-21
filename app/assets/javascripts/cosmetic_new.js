@@ -1,35 +1,27 @@
 $('#big-select').on('change', function() {
   var category_id = $(this).val();
-	alert('이건 a');
 
   $.ajax({
-    url: "/posts/" + category_id + "/get_subcategories", 
+    url: "/posts/" + category_id + "/get_middle_categories", 
     type: "GET",
     data: { "category_id": category_id },
     dataType: "script", 
-    success: function(){
-    	alert('s');
-    },
-    error: function(jqXHR){
-    	alert(jqXHR.responseText);
-    }
+    // error: function(jqXHR){
+    //   alert(jqXHR.responseText);
+    // }
   });
 });
 
-$('#middle-select').on('change', function() {
-  var category_id = $(this).val();
-	alert('이건 b');
+$('#middle-category').on('change', function() {
+  var category_id = $('#middle-select').val();
 
   $.ajax({
-    url: "/posts/" + category_id + "/get_subcategories", 
+    url: "/posts/" + category_id + "/get_small_categories", 
     type: "GET",
     data: { "category_id": category_id },
     dataType: "script", 
-    success: function(){
-    	alert('s');
-    },
-    error: function(jqXHR){
-    	alert(jqXHR.responseText);
-    }
+    // error: function(jqXHR){
+    //   console.log(jqXHR.responseText);
+    // }
   });
 });
