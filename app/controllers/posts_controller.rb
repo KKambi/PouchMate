@@ -95,7 +95,7 @@ class PostsController < ApplicationController
 
    def search
       @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
-
+      @post = Post.new
     end 
 
     def autocomplete

@@ -21,6 +21,7 @@
   background-color: black;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .jnavbar_brand:hover, .jnavbar_brand:visited {
   text-decoration: none;
@@ -28,6 +29,7 @@
 }
 .jnavbar_brand{
   font-size: 50px;
+  color: white;
 }
 
 .cntr-innr {
@@ -84,4 +86,83 @@
   color: inherit;
   background: transparent;
   outline-width: 0px;
+}
+
+/*tablesindex에서상품조회모달*/
+.cosmeticmodal_content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 2px 10px 18px #202020;
+  display: block;
+  margin: 50px auto;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 350px;
+}
+.newcosmetic-edit-content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 2px 10px 18px #202020;
+  display: block;
+  margin: 50px auto;
+  position: relative;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+}
+.jcontent_2_edit{
+  margin-left: 20px;
+}
+.topofthemodaledit{
+  display: flex;
+  justify-content: space-around;
+}
+.modalcos{
+  width: 250px;
+}
+.bottomofthemodaledit{
+  margin-left: 10px;
+}
+.newcosmetic-edit-modal{
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 60px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/*search modal*/
+.search_modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.search_modal_content{
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 2px 10px 18px #202020;
+  display: block;
+  height: 480px;
+  margin: 50px auto;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 260px;
+}
+.s_close{
+  font-size: 20px;
+}
+.s_titletitle{
+  margin-top: 10px;
 }

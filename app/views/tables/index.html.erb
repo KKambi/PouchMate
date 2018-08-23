@@ -1,16 +1,3 @@
-<nav class="jnav" style='height: 80px;'>
-  <div class='headingpouch'>
-    <a class="jnavbar_brand" href="#">Pouch Mate</a>
-  </div>
-  <div class="cntr-innr">
-    <div class='search'>
-      <%= form_tag("/posts/search", method: "get") do %>
-        <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
-      <% end %>
-    </div>  
-  </div> 
-</nav> 
-
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
   <div class="carousel-inner">
@@ -45,7 +32,7 @@
                         <h1><%= @user.nickname %></h1>
                       </div>
                       <div class='profile_info_mes'>
-                        <h5>여러분 클리오 립스틱을 구매하세요 / 가성비 좋은 크림 추천좀</h5>                        
+                        <h5><%= @user.intro%></h5>                        
                       </div>
                         <br>
                     </div>
@@ -53,7 +40,7 @@
 
                 <div class='jprofile_bottom'>
                   <div class='jhistory'>
-                    <a href='/friends/index'><img src='/time.png'></a>
+                    <a href='/friends/index'><img src='/likeblack.png'></a>
                   </div>
                   <div class='jfriends'>
                     <% if user_signed_in? %>
@@ -89,45 +76,41 @@
 
                   <div class="cosmeticmodal myModal">
                     <div class="cosmeticmodal_content">
-                      <span class="close">&times;</span>
-                      <p>
-                      상품 : <%= p.title %><br>
-                      메모 : <%= p.memo %><br>
-                      </p>
-                      <div class='testest'>
-                        <strong>carrierimage:</strong>
-                        <img src="<%= p.carrierimage.thumb %>">
+                      <span class="cosmeticclose">&times;</span>
+                      <div class='jflex'>
+                        <div class='jpicture'>
+                          <div class='modalcospic' style='width:100px; height:100px;'>
+                            <img src=" <%=p.carrierimage.modalthumb%>">
+                          </div>
+                          <div style='font-size: 10px; color: gray; text-align:center;'>
+                            <%= p.category %>,
+                            <%= p.public %><br>
+                          </div>
+                        </div>
+                        <div class='jcontent'>
+                          <strong><h3><%= p.title %></h3></strong>
+                          <br>
+                          <h6><%= p.open_date %> 개봉</h6>
+                          <h6><%= p.exp_date %> 까지</h6><br>
+                          <h4 style='color:red;'>D-day</h4><br>
+                          <h4><%= p.memo %></h4>
+                        </div>
                       </div>
-                      <p>
-                        종류 : <%= p.category %><br>
-                        <strong>Open date:</strong><%= p.open_date %><br>
-                        <strong>Exp date:</strong><%= p.exp_date %><br>
-                        <strong>Public:</strong><%= p.public %><br>
-                        <strong>D-day 테스트용</strong>
-                        </br>
-                        exp_date : <%= @exp_date %>
-                        </br>
-                        today : <%= @today %>
-                        </br>
-                        D<%= @sign %><%= @remain %>
-                        </br>
-                        결과 : <%= @result %>
-                      </p>
-                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
-                      <p>
-                        <% if current_user.is_like? (p) %>
-                        <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 취소 </button>  
-                        <%end%>
-                        
-                        <% else %>
-                        <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 </button>  
-                        <%end%>
-                        
-                        <% end %>
-                      </p>
-                      <%= link_to 'Edit', edit_post_path(p) %>
+
+                      <div class='jflex_2'>
+                          <% if current_user.is_like? (p) %>
+                          <%=form_tag("/post/#{p.id}/like") do%>
+                          <button class='ulike'><img src='/16redh.png'> 인생템 취소 </button>
+                          <%end%>
+
+                          <% else %>
+                          <%=form_tag("/post/#{p.id}/like") do%>
+                          <button class='unolike'><img src='/16grayh.png'> 인생템</button>
+                          <%end%>
+                          <% end %>
+                        <button class='jedit'><%= link_to '수정', edit_post_path(p)%></button>
+                        <button class='jedit'><%= link_to '삭제', edit_post_path(p)%></button>
+                      </div>
                     </div>
                   </div>
 
@@ -186,16 +169,16 @@
                         </br>
                         결과 : <%= @result %>
                       </p>
-                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
+                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.랄랄랄<br>      
                       <p>
                         <% if current_user.is_like? (p) %>
                         <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 취소 </button>  
+                        <button class='notlikeit'> 인생템 취소 </button> 
                         <%end%>
                         
                         <% else %>
                         <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 </button>  
+                        <button class='likeit'> 인생템 </button>
                         <%end%>
                         
                         <% end %>
@@ -241,8 +224,8 @@
                   </div>
                   <div class="commentText">
                     <div class='a'>
-                      <p class='who'><%= comment.user.nickname %></p>
-                      <p> <%= comment.content %></p>                      
+                      <%= comment.user.nickname %>
+                      <%= comment.content %>                     
                     </div>
                       <span class="date sub-text"><%= comment.created_at.strftime("%y/%m/%d") %></span>
                   </div>
@@ -252,10 +235,10 @@
           <%= form_for TableComment.new, html: {class: "form-inline"}, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
               <div class="form-group-com">
                   <img src='<%=@user.profile_img.thumb3 %>' class='mycommentprofileimage'>
-                  <%= f.text_field :content, class: 'form-control', placeholder: '댓글달기'%>
+                  <%= f.text_field :content, class: 'form-control', :size=>"50", placeholder: '댓글달기'%>
               </div>
-              <div class="form-group">
-                  <%=f.submit "작성", class: 'btn btn-default'%>
+              <div class="form-group-com">
+                <%=f.submit "작성", class: 'btn btn-default'%>
               </div>
           <% end %>
       </div>
@@ -274,7 +257,7 @@
                   </div>
                   <div class="commentText">
                     <div class='a'>
-                      <p class='who'><%= comment.user.nickname %></p>
+                      <div class='who'><%= comment.user.nickname %></div>
                       <p> <%= comment.content %></p>                      
                     </div>
                       <span class="date sub-text"><%= comment.created_at.strftime("%y/%m/%d") %></span>
@@ -287,7 +270,7 @@
                   <img src='<%=@user.profile_img.thumb3 %>' class='mycommentprofileimage'>
                   <%= f.text_field :content, class: 'form-control', placeholder: '댓글달기'%>
               </div>
-              <div class="form-group">
+              <div class="form-group-com">
                   <%=f.submit "작성", class: 'btn btn-default'%>
               </div>
           <% end %>
@@ -338,7 +321,7 @@
  window.onload = function(){
 var modals = document.getElementsByClassName('cosmeticmodal');
 var btns = document.getElementsByClassName("openmodal");
-var spans=document.getElementsByClassName("close");
+var spans=document.getElementsByClassName("cosmeticclose");
 for(let i=0;i<btns.length;i++){
     btns[i].onclick = function() {
         modals[i].style.display = "block";
