@@ -27,4 +27,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
+
   encoding: unicode
+
+
+

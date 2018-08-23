@@ -1,2 +1,14 @@
+    <nav class="jnav" style='height: 90px;'>
+      <div class='headingpouch'>
+        <a class="jnavbar_brand" href="#">Pouch Mate</a>
+      </div>
+      <div class="cntr-innr">
+        <div class='search'>
+          <%= form_tag("/posts/search", method: "get") do %>
+            <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+          <% end %>
+        </div>  
+      </div> 
+    </nav>
 <h1>임시 마이페이지</h1>
 * 회원정보 수정 시 마이페이지로 이동

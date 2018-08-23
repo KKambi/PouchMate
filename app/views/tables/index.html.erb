@@ -1,3 +1,15 @@
+    <nav class="jnav" style='height: 90px;'>
+      <div class='headingpouch'>
+        <a class="jnavbar_brand" href="#">Pouch Mate</a>
+      </div>
+      <div class="cntr-innr">
+        <div class='search'>
+          <%= form_tag("/posts/search", method: "get") do %>
+            <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+          <% end %>
+        </div>  
+      </div> 
+    </nav>
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
   <div class="carousel-inner">
@@ -39,14 +51,36 @@
                 </div><br>
 
                 <div class='jprofile_bottom'>
-                  <div class='jhistory'>
-                    <a href='/friends/index'><img src='/likeblack.png'></a>
+                  <div class='jhistory' id='jhitory'>
+                    <img src='/likeblack.png'>
                   </div>
-                  <div class='jfriends'>
+
+                  <div class='jhistory_popover' id='jhistory_popover'>
+                    <div class="jhistory_popover_content">
+                      <span onclick="document.getElementById('jhistory_popover').style.display='none'"
+                      class="jhclose">&times;</span>                     
+                      내 인생템 리스트 나열 이다옹
+                      <div class="popover-arrow"></div>
+                    </div>
+                  </div>
+
+                  <div class='jfriends' id='jfriends'>
                     <% if user_signed_in? %>
-                      <a href='/friends/index'><img src='/group.png'></a>
+                      <img src='/group.png'>
                     <% end %>
                   </div>
+
+                  <div class='jfriends_popover' id='jfriends_popover'>
+                    <div class="jfriends_popover_content">
+
+                      <span onclick="document.getElementById('jfriends_popover').style.display='none'"
+                      class="jfclose">&times;</span>   
+
+                      내 친구들 나열 이라옹
+                      <div class="popover-arrow"></div>
+                    </div>
+                  </div>
+
                   <div class='jmypage'>
                     <% if user_signed_in? %>
                     <a href='/users/edit'><img src='/user.png'></a>
@@ -298,6 +332,7 @@
     </div>
   </div>                        
 </div>
+<!-- 상품등록모달 -->
 <script type='text/javascript'>
   // Get the modal
   var modalform = document.getElementById('myModal-form');
@@ -326,6 +361,36 @@
   }
 </script>
 
+<!-- 인생템모달 -->
+<script type='text/javascript'>
+  var jhpopover= document.getElementById('jhistory_popover');
+  var jhbtn = document.getElementById("jhitory");
+  jhbtn.onclick = function() {
+    jhpopover.style.display = "block";
+  }
+  window.onclick = function(event) {
+    if (event.target == jhpopover) {
+        jhpopover.style.display = "none";
+      }
+  }
+</script>
+
+<!-- 내친구목록모달 -->
+<script type='text/javascript'>
+  var jfpopover= document.getElementById('jfriends_popover');
+  var jfbtn = document.getElementById("jfriends");
+  jfbtn.onclick = function() {
+    jfpopover.style.display = "block";
+  }         
+  window.onclick = function(event) {
+    if (event.target == jfpopover) {
+        jfpopover.style.display = "none";
+      }
+  }
+
+</script>
+
+<!-- 화장품 각각 모달 -->
 <script type='text/javascript'>
  window.onload = function(){
 var modals = document.getElementsByClassName('cosmeticmodal');
@@ -343,7 +408,7 @@ for(let i=0;i<spans.length;i++){
 }
 }
 </script>
-
+<!-- 검색 자바 -->
 <script type="text/javascript">
   $("#inpt_search").on('focus', function () {
     $(this).parent('label').addClass('active');
