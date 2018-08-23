@@ -1,3 +1,15 @@
+    <nav class="jnav" style='height: 90px;'>
+      <div class='headingpouch'>
+        <a class="jnavbar_brand" href="#">Pouch Mate</a>
+      </div>
+      <div class="cntr-innr">
+        <div class='search'>
+          <%= form_tag("/posts/search", method: "get") do %>
+            <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+          <% end %>
+        </div>  
+      </div> 
+    </nav>
 <h1>검색 결과</h1> <h2>결과를 클릭해 간단히 상품을 등록하세요</h2><br>
 <p>화장품 결과</p>
 <% @items.each do |k| %>
@@ -27,7 +39,7 @@
 			      </div>
 
 			      <div class="field form-group">
-			        <%= form.text_field :title, :class => 'control-inputs s_title', :value =>'test'%>
+			        <%= form.text_field :title, :class => 'control-inputs s_title', :value => k.title %>
 			        <%= form.label :"화장품 이름", :class =>'control-label'%>
 			      </div>
 

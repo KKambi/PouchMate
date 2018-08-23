@@ -452,3 +452,44 @@
   border-style: hidden;
   border-radius: 15px;
 }
+
+//재인시도해본다popover
+.jhistory_popover, .jfriends_popover{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  padding-top: 60px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+.jhistory_popover_content, .jfriends_popover_content{
+  background-color: rgb(233, 212, 222);
+  border-radius: 4px;
+  box-shadow: 3px -2px 4px #AAA;
+  display: block;
+  height: 100px;
+  margin: 50px auto;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  width: 18%;
+  top: 230px;
+}
+
+.popover-arrow {
+  position: absolute;
+  top: -18px;
+  left: 20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid rgb(233, 212, 222);
+  width: 0;
+  height: 0;
+  -webkit-filter: drop-shadow(0 -2px 2px #AAA);
+}
+.jfclose, .jhclose{
+  margin-left: 30px;
+  font-size: 20px;
+}
