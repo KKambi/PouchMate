@@ -76,43 +76,7 @@
 
                   <div class="cosmeticmodal myModal">
                     <div class="cosmeticmodal_content">
-<<<<<<< HEAD
-                      <span class="close">&times;</span>
-                      <p>
-                      상품 : <%= p.title %><br>
-                      메모 : <%= p.memo %><br>
-                      </p>
-                      <div class='testest'>
-                        <strong>이미지</strong>
-                        <img src="<%= p.carrierimage.thumb %>">
-                      </div>
-                      <p>
-                        <strong>종류 : </strong> <%= Category.find(p.category).name %><br>
-                        <strong>개봉날짜 : </strong><%= p.open_date %><br>
-                        <strong>사용기한 : </strong><%= p.exp_date %><br>
-                        <strong>공개여부 : </strong><%= p.public %>
-                        <% @exp = p.exp_date %>
-                        <% @today = Date.today %>
-                        </br>
-                        D<%= sprintf("%+d", @remain = @today - @exp) %>
-                      </p>
-                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.<br>      
-                      <p>
-                        <% if current_user.is_like? (p) %>
-                        <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 취소 </button>  
-                        <%end%>
-                        
-                        <% else %>
-                        <%=form_tag("/post/#{p.id}/like") do%>
-                        <button> 좋아요 </button>  
-                        <%end%>
-                        
-                        <% end %>
-                      </p>
-                      <%= link_to '수정', edit_post_path(p) %>
-                      <%= link_to '삭제', post_path(p), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %>
-=======
+
                       <span class="cosmeticclose">&times;</span>
                       <div class='jflex'>
                         <div class='jpicture'>
@@ -148,7 +112,6 @@
                         <button class='jedit'><%= link_to '수정', edit_post_path(p)%></button>
                         <button class='jedit'><%= link_to '삭제', edit_post_path(p)%></button>
                       </div>
->>>>>>> 0820_Jane
                     </div>
                   </div>
 
