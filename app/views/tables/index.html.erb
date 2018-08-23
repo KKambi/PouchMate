@@ -84,8 +84,14 @@
                             <img src=" <%=p.carrierimage.modalthumb%>">
                           </div>
                           <div style='font-size: 10px; color: gray; text-align:center;'>
-                            <%= p.category %>,
-                            <%= p.public %><br>
+                            <%= Category.find(p.category).name %><br>
+                            <% if p.public == true %>
+                              <% @public = "공개" %>
+                            <% else %>
+                              <% @public = "비공개" %>
+                            <% end %>
+                            <%= @public %>
+                            <br>
                           </div>
                         </div>
                         <div class='jcontent'>
