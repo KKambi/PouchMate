@@ -29,14 +29,15 @@
         <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
       </div>
       <div class="cntr-innr">
-        <div class='search'>
-          <form autocomplete="off" action="/posts/search">
-            <div class="autocomplete" style="width:300px;">
-              <input id="myInput" type="text" name="mySearch" >
+        <label class='search' for='inpt_search'>
+          <form id='inpt_search' autocomplete="off" action="/posts/search">
+            <div class="autocomplete janesearch" style="width:300px;">
+              <input id="inpt_search" type="text" name="mySearch" >
+              <input type="submit" class='janesubmit'>
             </div>
-            <input type="submit">
+            
           </form>
-        </div>  
+        </label>  
       </div> 
     </nav>   
 
@@ -61,6 +62,17 @@
         <%end%>
       </p>
     </div>
+
+    <!-- 검색 자바 -->
+    <script type="text/javascript">
+      $("#inpt_search").on('focus', function () {
+        $(this).parent('label').addClass('active');
+    });
+    $("#inpt_search").on('blur', function () {
+        if($(this).val().length == 0)
+            $(this).parent('label').removeClass('active');
+    });
+    </script>
   </body>
   
 </html>

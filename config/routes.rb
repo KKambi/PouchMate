@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get 'tables/mypage'
 
   post 'tables/comments/create/:user_id' => 'tables#comment_create', as: "tables_comments_create"
-  
-
 
   # Devise controller 관련 라우팅
   devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords', sessions: 'users/sessions' }

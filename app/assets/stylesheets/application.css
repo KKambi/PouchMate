@@ -54,7 +54,7 @@
   transition: all 200ms ease;
   cursor: text;
 }
-.search:after {
+/*.search:after {
   content: "";
   position: absolute;
   width: 3px;
@@ -66,17 +66,17 @@
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   transition: all 200ms ease;
-}
+}*/
 .search.active,
-.search:hover {
+.search{
   width: 200px;
   height: 35px;
-  margin-right: 0px;
+  margin-right: 100px;
 }
-.search.active:after,
+/*.search.active:after,
 .search:hover:after {
   height: 0px;
-}
+}*/
 .search input {
   width: 100%;
   border: none;
@@ -87,7 +87,12 @@
   background: transparent;
   outline-width: 0px;
 }
-
+.janesearch{
+  display: flex;
+}
+.janesubmit{
+  margin-left: 10px;
+}
 /*tablesindex에서상품조회모달*/
 .cosmeticmodal_content {
   background-color: #ffffff;
