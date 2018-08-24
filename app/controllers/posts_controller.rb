@@ -123,7 +123,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :memo, :img_url, :category, :open_date, :exp_date, :public, :user_id, :carrierimage)
+      params.require(:post).permit(:title, :memo, :img_url, :category, :open_date, :exp_date, :carousel, :public, :user_id, :carrierimage)
     end
 
     def force_json

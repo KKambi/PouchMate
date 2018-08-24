@@ -1,1 +1,6 @@
-$('#middle-category').html("<%= j collection_select(:post, :category, @middle_categories, :id, :name, {:prompt => "중분류"}, {:id => "middle-select", :required => true}) %>");
+<% if @middle_categories.blank? %>
+	$('#middle-select').attr('disabled', true);
+	$('#middle-select').hide();
+<% else %>
+	$('#middle-category').html("<%= j collection_select(:post, :category, @middle_categories, :id, :name, {:prompt => "중분류"}, {:id => "middle-select", :required => true}) %>");
+<% end %>
