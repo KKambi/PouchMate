@@ -24,6 +24,18 @@
   </head>
 
   <body>
+    <nav class="jnav" style='height: 90px;'>
+      <div class='headingpouch'>
+        <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
+      </div>
+      <div class="cntr-innr">
+        <div class='search'>
+          <%= form_tag("/posts/search", method: "get") do %>
+            <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
+          <% end %>
+        </div>  
+      </div> 
+    </nav>    
     <% if notice %>
       <p id="notice"><%= notice %></p>
     <% end %>
@@ -32,7 +44,7 @@
     <% end %>      
     <%= yield %>
 
-    <div>
+    <div class='application_login_info'>
       <p>★모든 페이지마다 공유하는 로그인 서식★
         </br>
         <% if user_signed_in? %>

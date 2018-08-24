@@ -1,6 +1,10 @@
 
 <style>
 
+    .jnav, .application_login_info{
+      display: none;
+    }
+
     .modal-content{
         background-color: #333333;
         background-color: rgba( 51, 51, 51, 0.95 );
@@ -277,7 +281,9 @@ body {
 
       <!-- a tag trigger modal -->
             <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
-
+            <% if user_signed_in? %>
+              <%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 
+            <% end %>
 
             
             <!-- Modal -->
@@ -412,9 +418,7 @@ body {
       
 <!-- * 로그인 안하면 화장대 못들어감 * 타이틀에서 밑으로 스크롤 하면 견본화장대 구경 가능 -->
 <br>
-<% if user_signed_in? %>
-	<%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 
-<% end %>
+
 
 
 

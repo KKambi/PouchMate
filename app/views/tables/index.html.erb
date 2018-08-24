@@ -1,15 +1,3 @@
-    <nav class="jnav" style='height: 90px;'>
-      <div class='headingpouch'>
-        <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
-      </div>
-      <div class="cntr-innr">
-        <div class='search'>
-          <%= form_tag("/posts/search", method: "get") do %>
-            <%= text_field_tag(:search,params[:search], data: {behavior:"autocomplete"}) %>
-          <% end %>
-        </div>  
-      </div> 
-    </nav>
 <!--카루셀 화장대-->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="10000">
   <div class="carousel-inner">
