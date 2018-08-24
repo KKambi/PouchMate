@@ -1,8 +1,16 @@
 <h1>검색 결과</h1> <h2>결과를 클릭해 간단히 상품을 등록하세요</h2><br>
-<p>화장품 결과</p>
+<h1><화장품 결과></h1>
 
 <% @items.each do |k| %>
 	<div class='search_Btn'><%= k.title %></div>
+
+	<p>
+  <strong>Like:</strong>
+  <%= k.likes.size %> 명이 좋아합니다. 
+</p>
+
+
+
 	<div class='search_modal'>
 		<div class='search_modal_content'>
 			<div class='newcosmetic ctn-form'>
@@ -88,6 +96,21 @@
 		</div>
 	</div>
 <%end%>
+
+
+<!--유저검색-->
+
+<h1><유저 검색></h1>
+
+<% @usersearch.each do |a| %>
+<%= a.nickname %>
+<%= a.email %>
+<%= link_to "친구 화장대 보기", tables_path(user_id: a.id) %>
+<%end%>
+
+
+
+
 
 <script type='text/javascript'>
  window.onload = function(){
