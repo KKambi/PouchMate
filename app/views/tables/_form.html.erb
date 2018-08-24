@@ -37,15 +37,16 @@
       </div>
 
       <div class="field form-group">
-        <%= form.label :'종류' %>
-        <%= form.select(:category, options_for_select(
-            [
-                ["스킨", "스킨"],
-                ['로션', "로션"],
-                ['립스틱', "립스틱"],
-                ['파운데이션', "파운데이션"],
-            ], 4
-        )) %>
+        <div id="big-category">
+          <%= form.label :'종류' %></br>
+          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select'} %>
+        </div>
+
+        <div id="middle-category">
+        </div>
+
+        <div id="small-category">
+        </div>
       </div>
 
       <div class="field form-group">
@@ -55,10 +56,11 @@
       </div>
 
       <div class="field form-group">
-        <%= form.label :'유통기한' %>
+        <%= form.label :'사용기한' %>
         <%= form.date_select :exp_date, :use_month_numbers=>true,
             start_year: Date.today.year-10, end_year: Date.today.year+10, prompt: { year: '연도' , month: '월', day: '일'} %>
       </div>
+      
       <div class='form-group'>
       <%= form.label :'공개여부' %>
         <div class='choose_section'>
@@ -85,3 +87,5 @@
     <% end %>
   <% end %>
 </div>
+
+<%= javascript_include_tag('cosmetic_new') %>
