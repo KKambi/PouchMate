@@ -1,7 +1,6 @@
 class TablesController < ApplicationController
 	before_action :authenticate_user!
   before_action :set_user_id, only: [:index]
-   before_action :authenticate_user!
   before_action :set_friend, only: :destroy
 
 	# GET /tables/:user_id

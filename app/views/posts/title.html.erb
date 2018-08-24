@@ -266,8 +266,6 @@ body {
 
     <!--로그인 창 -->
 <div class="login">
-<<<<<<< HEAD
-
 <%= form_tag(new_user_session_path) do %>
       <input type="text" placeholder="E-Mail" name="user[email]"><br>
       <input type="password" placeholder="password" name="user[password]"><br>
@@ -281,14 +279,6 @@ body {
 
 
       <!-- a tag trigger modal -->
-=======
-			<input type="text" placeholder="username" name="user"><br>
-			<input type="password" placeholder="password" name="password"><br>
-			<input type="button" value="Login"><br>
-			<a href='#' style='color:white'>로그인 없이 둘러보기</a>
-
-			<!-- a tag trigger modal -->
->>>>>>> 0814jisang
             <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
             <% if user_signed_in? %>
               <%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 

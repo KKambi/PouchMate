@@ -104,7 +104,7 @@ class PostsController < ApplicationController
   end
 
    def search
-       @items = Post.where(["title LIKE ?","%#{params[:mySearch]}%"])
+      @items = Post.where(["title LIKE ?","%#{params[:mySearch]}%"])
       @post = Post.new
     end 
 
