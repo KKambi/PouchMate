@@ -3,17 +3,6 @@
     <% if not user_signed_in? %>
       로그인이 필요합니다.
     <% else %>
-      <!-- form 작성 시 오류가 있다면, 저장되지 않는다는 에러 메세지 띄워줌 -->
-      <% if post.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-          <ul>
-          <% post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
       <div class='headofthemodal'>
         <div class="titletitle">상품 등록</div>
         <span class="close">&times;</span>

@@ -30,8 +30,8 @@
 
                 <div class='jprofile_top'>
                     <div class='profiletop'>
-                      <div class='nofcos'>56<br>화장품</div>
-                      <div class='noffriends'>118<br>친구</div>
+                      <div class='nofcos'><%= @cosmetics_num %><br>화장품</div>
+                      <div class='noffriends'><%= @friends_num %><br>친구</div>
                     </div>
 
                     <div class="profile">
@@ -75,8 +75,16 @@
 
                       <span onclick="document.getElementById('jfriends_popover').style.display='none'"
                       class="jfclose">&times;</span>   
-
-                      내 친구들 나열 이라옹
+                        <% if @friends.empty? %>
+                          친구가 없습니다
+                        <% else %>
+                          <% @friends.each do | friend |%>
+                          <p>
+                            <%= friend.nickname %>
+                            <%= link_to "친구 삭제",  friends_destroy_path(:id => friend.id), :method => :delete %>
+                          </p>
+                          <% end %>
+                        <% end %> 
                       <div class="popover-arrow"></div>
                     </div>
                   </div>

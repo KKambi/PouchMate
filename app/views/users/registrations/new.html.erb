@@ -1,21 +1,20 @@
 <h2>회원가입</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :"이메일" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :"이름" %><br />
-    <%= f.text_field :username, autofocus: true %>
+    <%= f.text_field :username, autofocus: true, :required => true  %>
   </div>
   
   <div class="field">
     <%= f.label :"닉네임" %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+    <%= f.text_field :nickname, autofocus: true, :required => true %>
   </div>
 
   <div class="field">
@@ -25,7 +24,7 @@
 
   <div class="field">
     <%= f.label :"나이" %>
-    <%= f.select :age, options_for_select(10..99) %>
+    <%= f.select :age, options_for_select(10..99), :required => true %>
   </div>
   
   <div class="field">
@@ -46,12 +45,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>자 이상)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :"비밀번호 확인" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
   </div>
 
   
