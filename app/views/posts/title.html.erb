@@ -51,16 +51,27 @@
 </div>
     <br>
 <div class="login">
-      <input type="text" placeholder="username" name="user"><br>
+
+<%= form_tag(new_user_session_path) do %>
+       <input type="text" placeholder="E-Mail" name="email"><br>
       <input type="password" placeholder="password" name="password"><br>
       <input type="button" value="Login">
+<% end %> 
+
+     <!--  <input type="text" placeholder="E-Mail" name="email"><br>
+      <input type="password" placeholder="password" name="password"><br>
+      <input type="button" value="Login"> -->
       <a href='#' style='color:white'>로그인 없이 둘러보기</a> / 
+
+
       <!-- a tag trigger modal -->
             <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
+
+
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle" style='color:white'>회원가입</h5>
@@ -69,34 +80,34 @@
                     </button>
                   </div>
                   
-                  
+                  <!------------------------------------->
                   <div class="modal-body">
                     <form>
                       <label>
                         <input type="text" id='regis' required />
                         <div class="label-text" >이름</div>
                       </label>
-<<<<<<< HEAD
+
                       <label id='regis-label'>
-=======
+
                       <label>
->>>>>>> 0814jisang
+
                         <input type="number" required />
                         <div class="label-text" >나이</div>
                       </label>
-<<<<<<< HEAD
+
                       <label id='regis-label'>
-=======
+
                       <label>
->>>>>>> 0814jisang
+
                         <input type="text" id='regis' required />
                         <div class="label-text" >E-Mail</div>
                       </label>
-<<<<<<< HEAD
+
                       <label id='regis-label'>
-=======
+
                       <label>
->>>>>>> 0814jisang
+
                         <input type="text" id='regis' required />
                         <div class="label-text" >닉네임</div>
                       </label>
@@ -181,7 +192,7 @@
                         }
                         button:hover, button:focus {
                           background-color: white;
-                          color: #333333;
+                          color: #333333;}
             
                     
                     </style>
