@@ -62,12 +62,7 @@
                   <div class='jfriends_popover' id='jfriends_popover'>
                     <div class="jfriends_popover_content">
 
-                      <span onclick="document.getElementById('jfriends_popover').style.display='none'"
-
-                      class="jfclose">&times;</span> 
-
-                     
-
+                      <span onclick="document.getElementById('jfriends_popover').style.display='none'" class="jfclose">&times;</span> 
                       <% if @friends.empty? %>
                       친구가 없습니다. 
                        <% else %>
@@ -79,10 +74,6 @@
                        <% end %> <br>
 
                        <a href='/friend_requests'>친구관리</a>
-
-  
-
- 
                       <div class="popover-arrow"></div>
                     </div>
                   </div>
@@ -124,7 +115,7 @@
                             <img src=" <%=p.carrierimage.modalthumb%>">
                           </div>
                           <div style='font-size: 10px; color: gray; text-align:center;'>
-                            <%= Category.where(name: p.category).name %><br>
+                            <%= Category.find(p.category).name %><br>
                             <% if p.public == true %>
                               <% @public = "공개" %>
                             <% else %>
