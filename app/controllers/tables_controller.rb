@@ -18,6 +18,12 @@ class TablesController < ApplicationController
 	  
 	  @cosmetics_num = @user.posts.count
 	  @friends_num = @friends.count
+
+
+	  @allLikes = @user.likes.all
+
+	  # @currentUserLikesInLikemodel = @as.post_id
+
 	end
 
 	# GET /tables/mypage

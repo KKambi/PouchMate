@@ -15,8 +15,8 @@ class PostsController < ApplicationController
     @posts = Post.all
     @post = Post.new
 
-    @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
- 
+    #깃에서 지워주세욥 @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+    #이것도! @usersearch = User.where(["nickname LIKE ?","%#{params[:search]}%"])
   end
 
   # GET /posts/1
@@ -107,7 +107,9 @@ class PostsController < ApplicationController
 
    def search
       @items = Post.where(["title LIKE ?","%#{params[:mySearch]}%"])
+      @usersearch = User.where(["nickname LIKE ?","%#{params[:mySearch]}%"])
       @post = Post.new
+      
     end 
 
     # def autocomplete

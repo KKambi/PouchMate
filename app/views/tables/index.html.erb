@@ -43,11 +43,19 @@
                     <img src='/likeblack.png'>
                   </div>
 
+
+<!---다은 인생템 관련 모달 부분 고친다 -->
                   <div class='jhistory_popover' id='jhistory_popover'>
                     <div class="jhistory_popover_content">
                       <span onclick="document.getElementById('jhistory_popover').style.display='none'"
-                      class="jhclose">&times;</span>                     
-                      내 인생템 리스트 나열 이다옹
+                      class="jhclose">&times;</span><br> 
+ 
+                      <% @allLikes.each do |a| %>
+                         <%= a.post.title %><br>
+                        
+                        <%end%>
+
+
                       <div class="popover-arrow"></div>
                     </div>
                   </div>
