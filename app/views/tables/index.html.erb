@@ -286,38 +286,26 @@
   </div>
 
   <div class='friends_div'>
-      <div class="titleBox">
-        <label>친구 추천</label>
-      </div>
-      <div class="actionBox">
-          <ul class="commentList">
-          <% User.find(params[:user_id]).table_comments.all.each do |comment| %>
-              <li>
-                  <div class="commenterImage">
-                    <img src='<%= comment.user.profile_img.thumb4 %>' class='commentprofileimage'> 
-                  </div>
-                  <div class="commentText">
-                    <div class='a'>
-                      <div class='who'><%= comment.user.nickname %></div>
-                      <p> <%= comment.content %></p>                      
-                    </div>
-                      <span class="date sub-text"><%= comment.created_at.strftime("%y/%m/%d") %></span>
-                  </div>
-              </li>
-          <% end %>
-          </ul>
-          <%= form_for TableComment.new, html: {class: "form-inline"}, url: tables_comments_create_path(user_id: params[:user_id]) do |f| %>
-              <div class="form-group-com">
-                  <img src='<%=@user.profile_img.thumb3 %>' class='mycommentprofileimage'>
-                  <%= f.text_field :content, class: 'form-control', placeholder: '댓글달기'%>
-              </div>
-              <div class="form-group-com">
-                  <%=f.submit "작성", class: 'btn btn-default'%>
-              </div>
-          <% end %>
-      </div>      
+    <div class="titleBox">
+
+    <!-- 일단 있는 친구들은 리스트 다 띄울게욥 -->
+      <label>친구 추천</label>
+    </div>
+    <% if user_signed_in? %>
+      <% for user in User.where.not(id: current_user.id) %>
+        <p>
+          <strong>
+            <%= user.nickname %>
+          </strong>
+          <%= link_to "친구요청 보내기", friend_requests_path(friend_id: user.id), :method => :post %>
+          <%= link_to "친구 화장대 보기", tables_path(user_id: user.id) %>
+        </p>
+      <% end %>
+    <% else %>
+      로그인을 해주세요
+    <% end %>
   </div>
-</div>
+
 <%= link_to 'New Post', new_post_path %>
 <!-- 모달 -->
 <div id="myBtn-form">등록하기</div>
