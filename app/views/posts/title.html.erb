@@ -1,9 +1,407 @@
+
+<style>
+
+    .modal-content{
+        background-color: #333333;
+        background-color: rgba( 51, 51, 51, 0.95 );
+    }
+    
+    form {
+      text-align: center;
+    }
+    
+
+    /*여기가 modal css*/
+    label {
+      display: block;
+      letter-spacing: 4px;
+      padding-top: 30px;
+      text-align: center;
+    }
+    label .field {
+      color: #9B9B9B;
+      cursor: text;
+      font-size: 24px;
+      line-height: 20px;
+      text-transform: uppercase;
+      -moz-transform: translateY(-34px);
+      -ms-transform: translateY(-34px);
+      -webkit-transform: translateY(-34px);
+      transform: translateY(-50px);
+      transition: all 0.3s;
+    }
+    input#titleSignupModal {
+
+      background-color: transparent;
+      border: 0;
+      border-bottom: 2px solid #4A4A4A ;
+      color: white;
+      font-size: 24px;
+      font-family: 'Gothic A1', sans-serif;
+      letter-spacing: -1px;
+      outline: 0;
+      padding: 5px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      width: 200px;
+    }
+    label input:focus {
+      max-width: 100%;
+      width: 400px;
+    }
+    label input:focus + .field {
+      color: #F0F0F0;
+      font-size: 13px;
+      -moz-transform: translateY(-74px);
+      -ms-transform: translateY(-74px);
+      -webkit-transform: translateY(-74px);
+      transform: translateY(-74px);
+    }
+    label input:valid + .field {
+      font-size: 13px;
+      -moz-transform: translateY(-74px);
+      -ms-transform: translateY(-74px);
+      -webkit-transform: translateY(-74px);
+      transform: translateY(-74px);
+    }
+    
+    button {
+      background-color: #333333;
+      border: 2px solid white;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+      margin-top: 15px;
+      padding: 10px 23px;
+      text-transform: uppercase;
+      transition: all 200ms;
+    }
+    button:hover, button:focus {
+      background-color: white;
+      color: #333333;}
+
+/*두번쨰*/
+
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.body {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  -webkit-filter: blur(5px);
+  z-index: 0;
+}
+
+.grad {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(0, 0, 0, 0)),
+    color-stop(100%, rgba(0, 0, 0, 0.35))
+  ); /* Chrome,Safari4+ */
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.header {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 255px);
+  z-index: 2;
+}
+
+.header div {
+  float: left;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.header div span {
+  font-size: 18px; 
+  line-height: 100%;
+}
+
+
+.login {
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.login input[type="text"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+}
+
+.login input[type="password"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type="button"] {
+  width: 250px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.login input[type="button"]:hover {
+  opacity: 0.8;
+}
+
+.login input[type="button"]:active {
+  opacity: 0.6;
+}
+
+.login input[type="text"]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type="password"]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type="button"]:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+</style>
+
 <body_mypage>
     <video id="bgvid" playsinline autoplay muted loop>
       <!--- Video needs to be muted, since Chrome 66+ will not autoplay video with sound.
     WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
     <source src="/Webcosmetic.mp4" type="video/mp4">
 </body_mypage>
+
+<!--로그인 창-->
+<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header" style='line-height:25px'>
+    <div>Pouch Mate<br><span>너와 나의 파우치 메이트</span></div>
+</div>
+    <br>
+
+    <!--로그인 창 -->
+<div class="login">
+
+<%= form_tag(new_user_session_path) do %>
+       <input type="text" placeholder="E-Mail" name="email"><br>
+      <input type="password" placeholder="password" name="password"><br>
+      <input type="button" value="Login">
+<% end %> 
+
+     <!--  <input type="text" placeholder="E-Mail" name="email"><br>
+      <input type="password" placeholder="password" name="password"><br>
+      <input type="button" value="Login"> -->
+      <a href='#' style='color:white'>로그인 없이 둘러보기</a> 
+
+
+      <!-- a tag trigger modal -->
+            <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
+
+
+            
+            <!-- Modal -->
+            <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document" >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle" style='color:white'>회원가입</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" justify-content='right'>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <!------------------------------------->
+                  <div class="modal-body">
+                   <!--  <form>
+                      <label>
+                        <input type="text" id='titleSignupModal' required />
+                        <div class="field" >이름</div>
+                      </label>
+
+                      <label id='titleSignupModal-label'>
+
+                      <label>
+
+                        <input type="number" required />
+                        <div class="field" >나이</div>
+                      </label>
+
+                      <label id='titleSignupModal-label'>
+
+                      <label>
+
+                        <input type="text" id='titleSignupModal' required />
+                        <div class="field" >E-Mail</div>
+                      </label>
+
+                      <label id='titleSignupModal-label'>
+
+                      <label>
+
+                        <input type="text" id='titleSignupModal' required />
+                        <div class="field" >닉네임</div>
+                      </label>
+                      <button>Submit</button>
+                    </form>
+                     -->
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <label>
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"이메일" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "off" %>
+  </div>
+
+
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"이름" %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "off"  %>
+  </div>
+  
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"닉네임" %><br />
+    <%= f.text_field :nickname, autofocus: true, autocomplete: "off"  %>
+  </div>
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"프로필 사진" %>
+    <%= f.file_field :profile_img %>
+  </div>
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"나이" %>
+    <%= f.select :age, options_for_select(10..99) %>
+  </div>
+  
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"성별" %>
+    <%= f.radio_button(:gender, "남자", :checked => true) %>
+    <%= label_tag(:gender, "남자") %>
+    <%= f.radio_button(:gender, "여자") %>
+    <%= label_tag(:gender, "여자") %>
+  </div>
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"한줄소개" %>
+    <%= f.text_field :intro, autocomplete: "off" %>
+  </div>
+  
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"비밀번호" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %>자 이상)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field" id='titleSignupModal'>
+    <%= f.label :"비밀번호 확인" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  
+  <div>
+    <%= f.hidden_field :admin %>
+  </div>
+</label>
+  <div class="actions">
+    <%= hidden_field_tag :redirect_to, params[:redirect_to] %>
+    <%= f.submit "회원가입" %>
+  </div>
+<% end %>
+
+
+                        
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+<div>
+      
+<!-- * 로그인 안하면 화장대 못들어감 * 타이틀에서 밑으로 스크롤 하면 견본화장대 구경 가능 -->
+<br>
+<% if user_signed_in? %>
+	<%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 
+<% end %>
+
+
+
+<!----자바스크립트 -->
+
 
 <script type='text/javascript'>
     var vid = document.getElementById("bgvid");
@@ -40,321 +438,3 @@
     })
 
 </script>
-
-<!--로그인 창-->
-<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
-
-<div class="body"></div>
-<div class="grad"></div>
-<div class="header" style='line-height:25px'>
-    <div>Pouch Mate<br><span>너와 나의 파우치 메이트</span></div>
-</div>
-    <br>
-<div class="login">
-
-<%= form_tag(new_user_session_path) do %>
-       <input type="text" placeholder="E-Mail" name="email"><br>
-      <input type="password" placeholder="password" name="password"><br>
-      <input type="button" value="Login">
-<% end %> 
-
-     <!--  <input type="text" placeholder="E-Mail" name="email"><br>
-      <input type="password" placeholder="password" name="password"><br>
-      <input type="button" value="Login"> -->
-      <a href='#' style='color:white'>로그인 없이 둘러보기</a> / 
-
-
-      <!-- a tag trigger modal -->
-            <a data-toggle="modal" href="#exampleModalCenter" style='color:White' data-backdrop="false">회원가입하기</a>
-
-
-            
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document" >
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle" style='color:white'>회원가입</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" justify-content='right'>
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  
-                  <!------------------------------------->
-                  <div class="modal-body">
-                    <form>
-                      <label>
-                        <input type="text" id='regis' required />
-                        <div class="label-text" >이름</div>
-                      </label>
-
-                      <label id='regis-label'>
-
-                      <label>
-
-                        <input type="number" required />
-                        <div class="label-text" >나이</div>
-                      </label>
-
-                      <label id='regis-label'>
-
-                      <label>
-
-                        <input type="text" id='regis' required />
-                        <div class="label-text" >E-Mail</div>
-                      </label>
-
-                      <label id='regis-label'>
-
-                      <label>
-
-                        <input type="text" id='regis' required />
-                        <div class="label-text" >닉네임</div>
-                      </label>
-                      <button>Submit</button>
-                    </form>
-                    
-                    <style>
-  
-                        .modal-content{
-                            background-color: #333333;
-                            background-color: rgba( 51, 51, 51, 0.95 );
-                        }
-                        
-                        form {
-                          text-align: center;
-                        }
-                        
-                        label {
-                          display: block;
-                          letter-spacing: 4px;
-                          padding-top: 30px;
-                          text-align: center;
-                        }
-                        label .label-text {
-                          color: #9B9B9B;
-                          cursor: text;
-                          font-size: 24px;
-                          line-height: 20px;
-                          text-transform: uppercase;
-                          -moz-transform: translateY(-34px);
-                          -ms-transform: translateY(-34px);
-                          -webkit-transform: translateY(-34px);
-                          transform: translateY(-50px);
-                          transition: all 0.3s;
-                        }
-                        input#regis {
-
-                          background-color: transparent;
-                          border: 0;
-                          border-bottom: 2px solid #4A4A4A ;
-                          color: white;
-                          font-size: 24px;
-                          font-family: 'Gothic A1', sans-serif;
-                          letter-spacing: -1px;
-                          outline: 0;
-                          padding: 5px 20px;
-                          text-align: center;
-                          transition: all 0.3s;
-                          width: 200px;
-                        }
-                        label input:focus {
-                          max-width: 100%;
-                          width: 400px;
-                        }
-                        label input:focus + .label-text {
-                          color: #F0F0F0;
-                          font-size: 13px;
-                          -moz-transform: translateY(-74px);
-                          -ms-transform: translateY(-74px);
-                          -webkit-transform: translateY(-74px);
-                          transform: translateY(-74px);
-                        }
-                        label input:valid + .label-text {
-                          font-size: 13px;
-                          -moz-transform: translateY(-74px);
-                          -ms-transform: translateY(-74px);
-                          -webkit-transform: translateY(-74px);
-                          transform: translateY(-74px);
-                        }
-                        
-                        button {
-                          background-color: #333333;
-                          border: 2px solid white;
-                          border-radius: 15px;
-                          color: white;
-                          cursor: pointer;
-                          font-size: 15px;
-                          margin-top: 15px;
-                          padding: 10px 23px;
-                          text-transform: uppercase;
-                          transition: all 200ms;
-                        }
-                        button:hover, button:focus {
-                          background-color: white;
-                          color: #333333;}
-            
-                    
-                    </style>
-                        
-                  </div>
-                </div>
-              </div>
-            </div>
-      
-<div>
-      <style>
-      @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-      @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-      
-      body {
-        margin: 0;
-        padding: 0;
-        background: #fff;
-      
-        color: #fff;
-        font-family: Arial;
-        font-size: 12px;
-      }
-      
-      .body {
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -40px;
-        bottom: -40px;
-        width: auto;
-        height: auto;
-        -webkit-filter: blur(5px);
-        z-index: 0;
-      }
-      
-      .grad {
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -40px;
-        bottom: -40px;
-        width: auto;
-        height: auto;
-        background: -webkit-gradient(
-          linear,
-          left top,
-          left bottom,
-          color-stop(0%, rgba(0, 0, 0, 0)),
-          color-stop(100%, rgba(0, 0, 0, 0.35))
-        ); /* Chrome,Safari4+ */
-        z-index: 1;
-        opacity: 0.7;
-      }
-      
-      .header {
-        position: absolute;
-        top: calc(50% - 35px);
-        left: calc(50% - 255px);
-        z-index: 2;
-      }
-      
-      .header div {
-        float: left;
-        color: #fff;
-        font-family: "Exo", sans-serif;
-        font-size: 35px;
-        font-weight: 500;
-      }
-      
-      .header div span {
-        font-size: 18px; 
-        line-height: 100%;
-      }
-      
-      
-      .login {
-        position: absolute;
-        top: calc(50% - 75px);
-        left: calc(50% - 50px);
-        height: 150px;
-        width: 350px;
-        padding: 10px;
-        z-index: 2;
-      }
-      
-      .login input[type="text"] {
-        width: 250px;
-        height: 30px;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        border-radius: 2px;
-        color: #fff;
-        font-family: "Exo", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 4px;
-      }
-      
-      .login input[type="password"] {
-        width: 250px;
-        height: 30px;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        border-radius: 2px;
-        color: #fff;
-        font-family: "Exo", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 4px;
-        margin-top: 10px;
-      }
-      
-      .login input[type="button"] {
-        width: 250px;
-        height: 35px;
-        background: #fff;
-        border: 1px solid #fff;
-        cursor: pointer;
-        border-radius: 2px;
-        color: #a18d6c;
-        font-family: "Exo", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        padding: 6px;
-        margin-top: 10px;
-      }
-      
-      .login input[type="button"]:hover {
-        opacity: 0.8;
-      }
-      
-      .login input[type="button"]:active {
-        opacity: 0.6;
-      }
-      
-      .login input[type="text"]:focus {
-        outline: none;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-      }
-      
-      .login input[type="password"]:focus {
-        outline: none;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-      }
-      
-      .login input[type="button"]:focus {
-        outline: none;
-      }
-      
-      ::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
-      
-      ::-moz-input-placeholder {
-        color: rgba(255, 255, 255, 0.6);
-      }
-      
-      </style>
-      
-<!-- * 로그인 안하면 화장대 못들어감 * 타이틀에서 밑으로 스크롤 하면 견본화장대 구경 가능 -->
-<br>
-<% if user_signed_in? %>
-	<%= link_to "내 화장대로 이동(테스트링크)", tables_path(user_id: current_user.id) %> 
-<% end %>
