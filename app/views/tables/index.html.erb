@@ -151,8 +151,10 @@
                           <button class='unolike'><img src='/16grayh.png'> 인생템</button>
                           <%end%>
                           <% end %>
+
                         <%= link_to '<button class="jedit">수정</button>'.html_safe, edit_post_path(p) %>
                         <%= link_to '<button class="jedit">삭제</button>'.html_safe, post_path(p), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %>
+
                       </div>
                     </div>
                   </div>
