@@ -1,6 +1,6 @@
     <nav class="jnav" style='height: 90px;'>
       <div class='headingpouch'>
-        <a class="jnavbar_brand" href="#">Pouch Mate</a>
+        <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
       </div>
       <div class="cntr-innr">
         <div class='search'>
