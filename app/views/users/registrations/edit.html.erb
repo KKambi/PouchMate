@@ -24,6 +24,8 @@
         <%= current_user.username %>
       </div>
 
+      <hr size="1" width="95%" noshade style="color:#D3D3D3" align="center">
+
       <div class="field" id='regis_name'>
         <%= f.label :"닉네임" %>
         <%= f.text_field :nickname, autofocus: true %>
@@ -31,7 +33,7 @@
 
       <div class="field" id='regis_profileimage'>
         <%= f.label :"프로필 사진" %></br>
-        <img src="<%= current_user.profile_img.thumb.url %>" id='regis_image'/></br>
+        <img src="<%= current_user.profile_img.thumb.url %>" id='regis_image'/><br></br>
         <%= f.file_field :profile_img %>
       </div>
 
@@ -49,27 +51,27 @@
       </div>
 
         <div class="field" >
-        <%= f.label :"한줄소개" %>
+        <%= f.label :"한줄소개" %><br>
         <%= f.text_field :intro %>
       </div>
 
+      <hr size="1" width="95%" noshade style="color:#D3D3D3" align="center">
+
 
       <div class="field">
-        <%= f.label :"비밀번호" %> <i>(공백으로 두시면 바뀌지 않습니다)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.label :"비밀번호" %> <span style='font-size:8px'>(공백으로 두시면 바뀌지 않습니다 / 6자 이상)</span><br>
+        <%= f.password_field :password, autocomplete: "off"  %>
         <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %>자 이상</em>
         <% end %>
       </div>
 
       <div class="field">
-        <%= f.label :"비밀번호 확인" %>
+        <%= f.label :"비밀번호 확인" %><br>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :"현재 비밀번호" %> <i>(정보 수정을 위해 현재 비밀번호를 입력하세요)</i><br />
+        <%= f.label :"현재 비밀번호" %> <span style='font-size:8px'>(정보 수정을 위해 현재 비밀번호를 입력하세요)</span><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
 
@@ -90,23 +92,55 @@
     margin: 0 auto;
     height: 30px;
     font-size: 20px;
-
   }
 
   .mypage-container{
+    text-align: left;
     padding: 20px 0 0 0;
+    border: 0.5 solid grey;
     margin-top: 20px;
-    background: skyblue;
+    background: white;
     width: 50%;
     height: 100%;
     margin: 0 auto;
     font-size: 15px;
+    box-shadow: 5px 5px 4px grey;
   }
 
   #regis_image{
-    width: 20%;
-    height: 15%;
+    width: 150px;
+    height: 100px;
     margin: 0 auto;
   }
+
+  .actions{
+    color: #D3D3D3;
+    background: transparent;
+    border: 2px solid #D3D3D3;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    }
+    .actions {
+/*          background-color: white; 
+*/          color: black; 
+          border: 2px solid #008CBA;
+    }
+   .actions:hover {
+      background-color: #008CBA;
+      color: white;
+  }
+
+
 </style>
 
