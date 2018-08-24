@@ -6,17 +6,6 @@
 	    <% if not user_signed_in? %>
 	      로그인이 필요합니다.
 	    <% else %>
-	      <!-- form 작성 시 오류가 있다면, 저장되지 않는다는 에러 메세지 띄워줌 -->
-	      <% if @post.errors.any? %>
-	        <div id="error_explanation">
-	          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this @post from being saved:</h2>
-	          <ul>
-	          <% @post.errors.full_messages.each do |message| %>
-	            <li><%= message %></li>
-	          <% end %>
-	          </ul>
-	        </div>
-	      <% end %>
 	      <div class='headofthemodal_edit'>
 	        <div class="titletitle">상품 수정</div>
 	      </div>
@@ -43,16 +32,40 @@
 			</div>
 
 			<div class='bottomofthemodaledit'>
-				<div id="big-category">
-          <%= form.label :'종류' %></br>
-          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select'} %>
-        </div>
-
-        <div id="middle-category">
-        </div>
-
-        <div id="small-category">
-        </div>
+				<!-- 대분류일때 -->
+				<% if @cate.depth == 0 %>
+					<div id="big-category">
+	          <%= form.label :'종류' %></br>
+	          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select'} %>
+	        </div>
+	        <div id="middle-category">
+	        </div>
+	        <div id="small-category">
+	        </div>
+	      <!-- 중분류일때 -->
+	      <% elsif @cate.depth == 1 %>
+	      	<div id="big-category">
+	          <%= form.label :'종류' %></br>
+	          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류", :selected => @cate.parent.id}, {:id => 'big-select' } %>
+	        </div>
+	        <div id="middle-category">
+	          <%= form.collection_select :category, Category.where(ancestry: @cate.ancestry), 'id', 'name', {:prompt => "중분류"}, {:id => 'middle-select'} %>	        	
+	        </div>
+	        <div id="small-category">
+	        </div>
+	      <!-- 소분류일때 -->  
+	      <% else %>
+	      	<div id="big-category">
+	          <%= form.label :'종류' %></br>
+	          <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류", :selected => @cate.parent.parent.id}, {:id => 'big-select' } %>
+	        </div>
+	        <div id="middle-category">
+	          <%= form.collection_select :category, Category.where(ancestry: @cate.parent.ancestry), 'id', 'name', {:prompt => "중분류", :selected => @cate.parent.id }, {:id => 'middle-select' } %>	        	
+	        </div>
+	        <div id="small-category">
+	        	<%= form.collection_select :category, Category.where(ancestry: @cate.ancestry), 'id', 'name', {:prompt => "소분류"}, {:id => 'small-select'} %>
+	        </div>
+	      <% end %>
 
 				<div class="field form-group">
 				    <%= form.label :'개봉날짜' %>

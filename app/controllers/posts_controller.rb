@@ -61,6 +61,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @cate_id = @post.category
+    @cate = Category.find(@cate_id)
   end
 
   # POST /posts
