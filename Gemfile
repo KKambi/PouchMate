@@ -9,6 +9,8 @@ gem 'devise'
 # 환경변수 관리
 gem 'figaro'
 
+gem 'pg'
+
 # carrierwave 재인이 설치한다링
 gem 'carrierwave', '~> 1.0'
 

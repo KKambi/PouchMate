@@ -118,7 +118,7 @@
                             <img src=" <%=p.carrierimage.modalthumb%>">
                           </div>
                           <div style='font-size: 10px; color: gray; text-align:center;'>
-                            <%= Category.find(p.category).name %><br>
+                            <%= Category.where(name: p.category).name %><br>
                             <% if p.public == true %>
                               <% @public = "공개" %>
                             <% else %>
@@ -152,7 +152,7 @@
                           <%end%>
                           <% end %>
                         <button class='jedit'><%= link_to '수정', edit_post_path(p)%></button>
-                        <button class='jedit'><%= link_to '삭제', post_path(p), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %></button>
+                        <button class='jedit'><%= link_to '삭제', post_path(p.id), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %></button>
                       </div>
                     </div>
                   </div>
