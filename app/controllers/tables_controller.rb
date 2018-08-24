@@ -9,8 +9,12 @@ class TablesController < ApplicationController
 		@user = User.find(@user_id)
 		@posts = @user.posts
 		@post = Post.new
-	    @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
-	    @friends = current_user.friends
+
+	  @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+	  @friends = @user.friends
+	  @cosmetics_num = @user.posts.count
+	  @friends_num = @friends.count
+
 	end
 
 	# GET /tables/mypage

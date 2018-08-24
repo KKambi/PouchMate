@@ -7,5 +7,5 @@ class Post < ApplicationRecord
 
 
   # 화장품명,  DB에 저장X
-  validates :title, :category, presence: true
+  validates :title, :category, :open_date, :exp_date, :public, presence: true
 end

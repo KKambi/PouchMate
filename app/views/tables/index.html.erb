@@ -1,6 +1,6 @@
     <nav class="jnav" style='height: 90px;'>
       <div class='headingpouch'>
-        <a class="jnavbar_brand" href="#">Pouch Mate</a>
+        <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
       </div>
       <div class="cntr-innr">
 
@@ -43,8 +43,8 @@
 
                 <div class='jprofile_top'>
                     <div class='profiletop'>
-                      <div class='nofcos'>56<br>화장품</div>
-                      <div class='noffriends'>118<br>친구</div>
+                      <div class='nofcos'><%= @cosmetics_num %><br>화장품</div>
+                      <div class='noffriends'><%= @friends_num %><br>친구</div>
                     </div>
 
                     <div class="profile">
@@ -88,6 +88,7 @@
                     <div class="jfriends_popover_content">
 
                       <span onclick="document.getElementById('jfriends_popover').style.display='none'"
+
                       class="jfclose">&times;</span> 
 
                      
@@ -106,7 +107,7 @@
 
   
 
-                      
+ 
                       <div class="popover-arrow"></div>
                     </div>
                   </div>

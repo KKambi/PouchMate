@@ -156,9 +156,10 @@ body {
   width: 350px;
   padding: 10px;
   z-index: 2;
+  padding-right: 100px;;
 }
 
-.login input[type="text"] {
+.login input[type="text"], .login input[type='email'] {
   width: 250px;
   height: 30px;
   background: transparent;
@@ -185,7 +186,7 @@ body {
   margin-top: 10px;
 }
 
-.login input[type="button"] {
+.login input[type="submit"] {
   width: 250px;
   height: 35px;
   background: #fff;
@@ -200,11 +201,11 @@ body {
   margin-top: 10px;
 }
 
-.login input[type="button"]:hover {
+.login input[type="submit"]:hover {
   opacity: 0.8;
 }
 
-.login input[type="button"]:active {
+.login input[type="submit"]:active {
   opacity: 0.6;
 }
 
@@ -218,7 +219,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.login input[type="button"]:focus {
+.login input[type="submit"]:focus {
   outline: none;
 }
 
@@ -228,6 +229,17 @@ body {
 
 ::-moz-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/*재인이가 추가한다 스타일*/
+#user_profile_img{
+  font-size: 10px;
+  padding-left: 40%;
+  padding-top: 10px;
+}
+.jgender{
+  display: flex;
+  padding-left: 38%;  
 }
 </style>
 
@@ -252,7 +264,9 @@ body {
 <div class="login">
 
 <%= form_tag(new_user_session_path) do %>
-       <input type="text" placeholder="E-Mail" name="user[email] "><br>
+
+       <input type="text" placeholder="E-Mail" name="user[email]"><br>
+
       <input type="password" placeholder="password" name="user[password]"><br>
       <input type="submit" value="Login">
 <% end %> 
@@ -260,7 +274,7 @@ body {
      <!--  <input type="text" placeholder="E-Mail" name="email"><br>
       <input type="password" placeholder="password" name="password"><br>
       <input type="button" value="Login"> -->
-      <a href='#' style='color:white'>로그인 없이 둘러보기</a> 
+      
 
 
       <!-- a tag trigger modal -->
@@ -348,10 +362,16 @@ body {
   
   <div class="field" id='titleSignupModal'>
     <%= f.label :"성별" %>
-    <%= f.radio_button(:gender, "남자", :checked => true) %>
-    <%= label_tag(:gender, "남자") %>
-    <%= f.radio_button(:gender, "여자") %>
-    <%= label_tag(:gender, "여자") %>
+    <div class='jgender'>
+      <div class='male'>
+        <%= label_tag(:gender, "남자") %>
+        <%= f.radio_button(:gender, "남자", :checked => true) %>      
+      </div>
+      <div class='female'>
+        <%= label_tag(:gender, "여자") %>
+        <%= f.radio_button(:gender, "여자") %>      
+      </div>
+    </div>
   </div>
 
   <div class="field" id='titleSignupModal'>
