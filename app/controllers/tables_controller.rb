@@ -6,10 +6,16 @@ class TablesController < ApplicationController
 	# GET /tables/:user_id
 	def index
 		@user = User.find(@user_id)
-		@posts = @user.posts
+		
 		@post = Post.new
+		@first_posts = @user.posts.where(carousel:1)
+		@second_posts = @user.posts.where(carousel:2)
+		@third_posts = @user.posts.where(carousel:3)
+	  
 	  @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+	  
 	  @friends = @user.friends
+	  
 	  @cosmetics_num = @user.posts.count
 	  @friends_num = @friends.count
 	end
