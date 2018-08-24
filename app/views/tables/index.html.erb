@@ -99,11 +99,13 @@
           <div class='bottom'>
             <div class='floor five'>
                 <% @first_posts.each_with_index do |p,index| %>
-
                   <div class="cosmetic_box openmodal myBtn">
-                    <img src="<%=p.carrierimage.thumb%>">
+                    <% if p.carrierimage.blank? %>
+                      <img src="<%=p.carrierimage.thumb%>" style='width:75px; height:75px;'>
+                    <% else %>
+                      <img src="<%=p.carrierimage.thumb%>">
+                    <% end %> 
                   </div>
-
                   <div class="cosmeticmodal myModal">
                     <div class="cosmeticmodal_content">
 
@@ -111,7 +113,11 @@
                       <div class='jflex'>
                         <div class='jpicture'>
                           <div class='modalcospic' style='width:100px; height:100px;'>
-                            <img src=" <%=p.carrierimage.modalthumb%>">
+                            <% if p.carrierimage.blank? %>
+                              <img src="<%=p.carrierimage.modalthumb%>" style='width:75px; height:75px;'>
+                            <% else %>
+                              <img src="<%=p.carrierimage.modalthumb%>">
+                            <% end %>
                           </div>
                           <div style='font-size: 10px; color: gray; text-align:center;'>
                             <%= Category.find(p.category).name %><br>
@@ -166,9 +172,12 @@
             <div class='pageright'>
               <div class='topright floorside'>
                 <% @second_posts.each_with_index do |p,index| %>
-
                   <div class="cosmetic_box openmodal myBtn">
-                    <img src="<%=p.carrierimage.thumb%>">
+                    <% if p.carrierimage.blank? %>
+                      <img src="<%=p.carrierimage.thumb%>" style='width:75px; height:75px;'>
+                    <% else %>
+                      <img src="<%=p.carrierimage.thumb%>">
+                    <% end %>
                   </div>
 
                   <div class="cosmeticmodal myModal">
@@ -178,7 +187,11 @@
                       <div class='jflex'>
                         <div class='jpicture'>
                           <div class='modalcospic' style='width:100px; height:100px;'>
-                            <img src=" <%=p.carrierimage.modalthumb%>">
+                            <% if p.carrierimage.blank? %>
+                              <img src="<%=p.carrierimage.modalthumb%>" style='width:75px; height:75px;'>
+                            <% else %>
+                              <img src="<%=p.carrierimage.modalthumb%>">
+                            <% end %>
                           </div>
                           <div style='font-size: 10px; color: gray; text-align:center;'>
                             <%= Category.find(p.category).name %><br>
@@ -239,47 +252,64 @@
               <div class='topleft floorside'>
                 <% @third_posts.each_with_index do |p,index| %>
                   <div class="cosmetic_box openmodal myBtn">
-                    <img src="<%=p.carrierimage.thumb%>">
+                    <% if p.carrierimage.blank? %>
+                      <img src="<%=p.carrierimage.thumb%>" style='width:75px; height:75px;'>
+                    <% else %>
+                      <img src="<%=p.carrierimage.thumb%>">
+                    <% end %>
                   </div>
+
                   <div class="cosmeticmodal myModal">
                     <div class="cosmeticmodal_content">
-                      <span class="close">&times;</span>
-                      <p>
-                      상품 : <%= p.title %><br>
-                      메모 : <%= p.memo %><br>
-                      </p>
-                      <div class='testest'>
-                        <strong>carrierimage:</strong>
-                        <img src="<%= p.carrierimage.thumb %>">
+
+                      <span class="cosmeticclose">&times;</span>
+                      <div class='jflex'>
+                        <div class='jpicture'>
+                          <div class='modalcospic' style='width:100px; height:100px;'>
+                            <% if p.carrierimage.blank? %>
+                              <img src="<%=p.carrierimage.modalthumb%>" style='width:75px; height:75px;'>
+                            <% else %>
+                              <img src="<%=p.carrierimage.modalthumb%>">
+                            <% end %>
+                          </div>
+                          <div style='font-size: 10px; color: gray; text-align:center;'>
+                            <%= Category.find(p.category).name %><br>
+                            <% if p.public == true %>
+                              <% @public = "공개" %>
+                            <% else %>
+                              <% @public = "비공개" %>
+                            <% end %>
+                            <%= @public %>
+                            <br>
+                          </div>
+                        </div>
+                        <div class='jcontent'>
+                          <strong><h3><%= p.title %></h3></strong>
+                          <br>
+                          <h6><%= p.open_date %> 개봉</h6>
+                          <h6><%= p.exp_date %> 까지</h6><br>
+                          <% @exp = p.exp_date %>
+                          <% @today = Date.today %>
+                          <h4 style='color:red;'>D<%= sprintf("%+d", @remain = @today - @exp) %></h4><br>
+                          <h4><%= p.memo %></h4>
+                        </div>
                       </div>
-                      <p>
-                        종류 : <%= p.category %><br>
-                        <strong>Open date:</strong><%= p.open_date %><br>
-                        <strong>Exp date:</strong><%= p.exp_date %><br>
-                        <strong>Public:</strong><%= p.public %><br>
-                        <strong>D-day 테스트용</strong>
-                        </br>
-                        exp_date : <%= @exp_date %>
-                        </br>
-                        today : <%= @today %>
-                        </br>
-                        D<%= @sign %><%= @remain %>
-                        </br>
-                        결과 : <%= @result %>
-                      </p>
-                      <strong>Like:</strong><%= p.likes.size %> 명이 좋아합니다.랄랄랄<br>      
-                      <p>
-                        <% if current_user.is_like? (p) %>
-                          <%= form_tag("/post/#{p.id}/like") do %>
-                            <button class='notlikeit'> 인생템 취소 </button> 
+
+                      <div class='jflex_2'>
+                          <% if current_user.is_like? (p) %>
+                          <%=form_tag("/post/#{p.id}/like") do%>
+                          <button class='ulike'><img src='/16redh.png'> 인생템 취소 </button>
+                          <%end%>
+
+                          <% else %>
+                          <%=form_tag("/post/#{p.id}/like") do%>
+                          <button class='unolike'><img src='/16grayh.png'> 인생템</button>
+                          <%end%>
                           <% end %>
-                        <% else %>
-                          <%= form_tag("/post/#{p.id}/like") do %>
-                            <button class='likeit'> 인생템 </button>
-                          <% end %>
-                        <% end %>
-                      </p>
-                      <%= link_to 'Edit', edit_post_path(p) %>
+
+                        <%= link_to '<button class="jedit">수정</button>'.html_safe, edit_post_path(p) %>
+                        <%= link_to '<button class="jedit">삭제</button>'.html_safe, post_path(p), method: :delete, data: { confirm: '정말 삭제하시겠어요?' } %>
+                      </div>
                     </div>
                   </div>
                 <%end%>                  
@@ -360,7 +390,7 @@
     <% end %>
   </div>
 
-<%= link_to 'New Post', new_post_path %>
+<!-- <%= link_to 'New Post', new_post_path %> -->
 <!-- 모달 -->
 <div id="myBtn-form">등록하기</div>
 

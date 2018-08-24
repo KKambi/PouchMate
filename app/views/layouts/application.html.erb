@@ -27,7 +27,7 @@
     <nav class="jnav" style='height: 90px;'>
       <div class='headingpouch'>
         <% if user_signed_in? %>
-          <%= link_to 'PouchMate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
+          <%= link_to 'Pouch Mate', tables_path(current_user.id), {:class => 'jnavbar_brand'} %>
         <% end %>
       </div>
       <div class="cntr-innr">
@@ -52,7 +52,7 @@
     <%= yield %>
 
     <div class='application_login_info'>
-      <p>★모든 페이지마다 공유하는 로그인 서식★
+      <p>★파우치 메이트★
         </br>
         <% if user_signed_in? %>
           <%= current_user.email %>
