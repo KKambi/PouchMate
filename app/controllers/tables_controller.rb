@@ -1,6 +1,8 @@
 class TablesController < ApplicationController
 	before_action :authenticate_user!
   before_action :set_user_id, only: [:index]
+   before_action :authenticate_user!
+  before_action :set_friend, only: :destroy
 
 	# GET /tables/:user_id
 	def index
@@ -31,4 +33,7 @@ class TablesController < ApplicationController
     def set_user_id
       @user_id = params[:user_id]
     end
+    def set_friend
+    @friend = current_user.friends.find(params[:id])
+  end
 end

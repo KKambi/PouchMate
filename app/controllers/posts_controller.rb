@@ -104,14 +104,14 @@ class PostsController < ApplicationController
   end
 
    def search
-      @items = Post.where(["title LIKE ?","%#{params[:search]}%"])
+       @items = Post.where(["title LIKE ?","%#{params[:mySearch]}%"])
       @post = Post.new
     end 
 
-    def autocomplete
-      @items = Post.where(["title LIKE ?","%#{params[:search]}%"]).limit(5)
+    # def autocomplete
+    #   @items = Post.where(["title LIKE ?","%#{params[:search]}%"]).limit(5)
 
-    end
+    # end
 
 
 
